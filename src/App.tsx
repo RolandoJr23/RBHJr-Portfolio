@@ -8,7 +8,7 @@ import ionicslogo from './assets/ionicslogo.webp';
 import jcologo from './assets/jcologo.png';
 
 function App() {
-  const jobRoles = ["Software Engineer", "Full Stack Developer", "Data Scientist", "Data Analyst"];
+  const jobRoles = ["Software Engineer", "Full Stack Developer", "Data Science", "Data Analyst"];
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
@@ -61,7 +61,7 @@ function App() {
             {/* My Name */}
             <h2 className="text-xl">Rolando Badillo Hernandez Jr.</h2>
             {/* My Professions */}
-            <div className="text-2xl w-80 h-8 pl-4 flex items-center">
+            <div className="text-2xl w-80 h-8 pl-13 flex items-center">
               <h3>{displayedText}</h3>
             </div>
             {/* Buttons Schedule and Send Email */}
@@ -89,7 +89,7 @@ function App() {
           </div>
         </div>
         {/* Middle Container */}
-        <div className="w-5xl h-lvh">
+        <div className="w-5xl h-lvh overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {/* Education */}
           <div className="w-3xl h-fit m-20">
             {/* Timelime Education */}
@@ -130,7 +130,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-60 m-20">
+          <div className="w-fit h-60 ml-20 ">
             {/* Timelime Experience */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Experiences</h2>
@@ -162,6 +162,81 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          {/* Tech Stack  */}
+          <div className='w-3xl h-fit ml-20 mb-10'>
+            <h1 className='text-2xl font-bold text-black'>Tech Stack</h1>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Frontend</h1>
+              <div className='flex flex-row mt-3'>
+                <h2 className='text-sm text-gray-400 pl-5'>HTML / CSS</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>JavaScript</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>TypeScript</h2>
+              </div>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Framework</h1>
+              <div className='flex flex-row mt-3'>
+                <h2 className='text-sm text-gray-400 pl-5'>React</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Express.js</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>.Net</h2>
+              </div>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Backend</h1>
+              <div className='flex flex-ro mt-3'>
+                <h2 className='text-sm text-gray-400 pl-5'>Node.js</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>PHP</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Python</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>C#</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>REST API</h2>
+              </div>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Database</h1>
+              <div className='flex flex-row mt-3'>
+                <h2 className='text-sm text-gray-400 pl-5'>MySQL</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>MSSQL</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>MongoDB</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>PostgreSQL</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Supabase</h2>
+              </div>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Development Tools</h1>
+              <div className='flex flex-row mt-3'>
+                <h2 className='text-sm text-gray-400 pl-5'>VS Code</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Visual Studio 2022</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Github</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>npm/yarn</h2>
+                <h2 className='text-sm text-gray-400 pl-5'>Postman</h2>
+              </div>
+            </div>
+          </div>
+          {/* Recent Porjects */}
+          <div className='w-3xl h-fit ml-20'>
+            <h1 className='text-2xl font-bold text-black'>Recent Projects</h1>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>My Thesis Project</h1>
+              <h2 className='text-sm text-gray-400 pl-5'>Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two
+                Main Roads in Tanauan City, Batangas Build in Python and Yolov8 Algorithm</h2>
+              <button className='text-sm text-blue-600 hover:underline font-semibold p-1 ml-5 cursor-pointer'>View Demo</button>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>Point of Sales</h1>
+              <h2 className='text-sm text-gray-400 pl-5'>Pointing Sales, Reduce error and Improvise sales products.</h2>
+              <button className='text-sm text-blue-600 hover:underline font-semibold p-1 ml-5 cursor-pointer'>View Demo</button>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>FINDSup</h1>
+              <h2 className='text-sm text-gray-400 pl-5'>is web-based application that connects local businesses with nearby suppliers and service providers.</h2>
+              <button className='p-1 ml-5'><a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline font-semibold">View Project</a></button>
+            </div>
+            <div className='mt-3'>
+              <h1 className='text-md text-black pl-5'>BlockAIStudy</h1>
+              <h2 className='text-sm text-gray-400 pl-5'>is a web-based application productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</h2>
+              <button className='p-1 ml-5'><a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline font-semibold">View Project</a></button>
             </div>
           </div>
         </div>
