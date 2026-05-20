@@ -1,4 +1,9 @@
-import { Mail, Calendar } from 'lucide-react';
+import { Mail, Calendar, ChevronDown, MapPin } from 'lucide-react';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon from '@mui/icons-material/Facebook';
+
 import { useState, useEffect } from 'react';
 
 import myphoto from './assets/rbhjr.jpg';
@@ -50,18 +55,55 @@ function App() {
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, roleIndex, jobRoles]);
 
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <div className="flex flex-row">
+      <style>
+        {`
+          .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .reveal-active {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        `}
+      </style>
+      <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
         {/* Left Side Container */}
-        <div className="w-130 h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 gap-2 ">
-          <div className="text-white w-80 h-96 flex flex-col gap-3 items-center" >
+        <div className="w-full md:w-2xl h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 gap-2 "> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width and full viewport height. */}
+          <div className="text-white w-80 h-fit flex flex-col gap-3 items-center mb-10" >
             {/* My Image */}
-            <img src={myphoto} alt="" className="w-48 h-48 rounded-full border-4 border-white" />
+            <img src={myphoto} alt="Rolando Badillo Hernandez Jr." className="w-48 h-48 rounded-full border-4 border-white" /> {/* Added descriptive alt text for accessibility. */}
             {/* My Name */}
             <h2 className="text-xl">Rolando Badillo Hernandez Jr.</h2>
+            {/* My location */}
+            <div className='w-full flex flex-row justify-center items-center gap-1'>
+              <MapPin className='w-3 h-3' />
+              <h3 className='text-xs'>San Antonio Santo Tomas, Batangas</h3>
+            </div>
             {/* My Professions */}
-            <div className="text-2xl w-80 h-8 pl-13 flex items-center">
+            <div className="text-2xl w-80 h-8 pl-13 flex items-center mt-5">
               <h3>{displayedText}</h3>
             </div>
             {/* Buttons Schedule and Send Email */}
@@ -71,27 +113,19 @@ function App() {
             </div>
           </div>
           {/* About */}
-          <div className="w-80 h-60 border-b-2 border-white">
+          <div className="max-w-100 word-spacing-[0.5em] h-72 pb-5 font-sans border-b-2 border-white">
             <h2 className="text-white font-bold text-lg">About</h2>
-            <div className="text-white flex justify-normal mt-2 text-justify">
-              <h3>I'm a Passionate in Computer Science with focus in Build Software Solution and solve the Real World Problems. For Better Future and Tomorrow.</h3>
+            <div className="text-white flex flex-col justify-normal mt-2 text-justify indent-8">
+              <h3>I am a Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools for our specific task and to grow ourselves and for a better future and tomorrow.</h3> <br />
+              <h3>Now I'm focusing building applications with integration of AI-powered tools into a modern applications.</h3>
             </div>
           </div>
-          {/* Services */}
-          <div className="w-80 h-60 mt-5">
-            <h2 className="text-white font-bold text-lg">Services</h2>
-            <div className="text-white mt-2">
-              <h3 className="mb-1">- Custom Software Application</h3>
-              <h3 className="mb-1">- Web Development</h3>
-              <h3 className="mb-1">- Mobile Development</h3>
-              <h3 className="mb-1">- SaaS Development</h3>
-            </div>
-          </div>
+
         </div>
-        {/* Middle Container */}
-        <div className="w-5xl h-lvh overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        {/* Main Content Area (Middle Container) */}
+        <div className="w-full md:w-5xl h-auto md:h-lvh overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {/* Education */}
-          <div className="w-3xl h-fit m-20">
+          <div className="w-3xl h-fit m-10 ml-20 reveal">
             {/* Timelime Education */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Education</h2>
@@ -130,7 +164,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-60 ml-20 ">
+          <div className="w-fit h-60 ml-20 reveal">
             {/* Timelime Experience */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Experiences</h2>
@@ -165,7 +199,7 @@ function App() {
             </div>
           </div>
           {/* Tech Stack  */}
-          <div className='w-3xl h-fit ml-20 mb-10'>
+          <div className='w-3xl h-fit ml-20 mb-10 reveal'>
             <h1 className='text-2xl font-bold text-black'>Tech Stack</h1>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Frontend</h1>
@@ -214,35 +248,83 @@ function App() {
               </div>
             </div>
           </div>
-          {/* Recent Porjects */}
-          <div className='w-3xl h-fit ml-20'>
-            <h1 className='text-2xl font-bold text-black'>Recent Projects</h1>
-            <div className='mt-3'>
-              <h1 className='text-md text-black pl-5'>My Thesis Project</h1>
-              <h2 className='text-sm text-gray-400 pl-5'>Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two
-                Main Roads in Tanauan City, Batangas Build in Python and Yolov8 Algorithm</h2>
-              <button className='text-sm text-blue-600 hover:underline font-semibold p-1 ml-5 cursor-pointer'>View Demo</button>
-            </div>
-            <div className='mt-3'>
-              <h1 className='text-md text-black pl-5'>Point of Sales</h1>
-              <h2 className='text-sm text-gray-400 pl-5'>Pointing Sales, Reduce error and Improvise sales products.</h2>
-              <button className='text-sm text-blue-600 hover:underline font-semibold p-1 ml-5 cursor-pointer'>View Demo</button>
-            </div>
-            <div className='mt-3'>
-              <h1 className='text-md text-black pl-5'>FINDSup</h1>
-              <h2 className='text-sm text-gray-400 pl-5'>is web-based application that connects local businesses with nearby suppliers and service providers.</h2>
-              <button className='p-1 ml-5'><a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline font-semibold">View Project</a></button>
-            </div>
-            <div className='mt-3'>
-              <h1 className='text-md text-black pl-5'>BlockAIStudy</h1>
-              <h2 className='text-sm text-gray-400 pl-5'>is a web-based application productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</h2>
-              <button className='p-1 ml-5'><a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-sm text-blue-600 hover:underline font-semibold">View Project</a></button>
+          {/* Recent Projects */}
+          <div className='w-3xl h-fit ml-20 pb-20 reveal'>
+            <h1 className='text-2xl font-bold text-black mb-6'>Recent Projects</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+              {/* Project 1 */}
+              <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div>
+                  <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>My Thesis Project</h1>
+                  <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two Main Roads in Tanauan City, Batangas Build in Python and Yolov8 Algorithm</p>
+                </div>
+                <button className='mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors'>View Demo →</button>
+              </div>
+
+              {/* Project 2 */}
+              <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div>
+                  <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>Point of Sales</h1>
+                  <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Point of Sales (POS) System in Modern UI/UX using Dynamic User Control for efficiency and
+                    reliable experience for improving accuracy, reduce error and improvise sales products.</p>
+                </div>
+                <button className='mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors'>View Demo →</button>
+              </div>
+
+              {/* Project 3 */}
+              <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div>
+                  <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>FINDSup</h1>
+                  <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Web-based application that connects local businesses with nearby suppliers and service providers.</p>
+                </div>
+                <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">View Project →</a>
+              </div>
+
+              {/* Project 4 */}
+              <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div>
+                  <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>BlockAIStudy</h1>
+                  <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</p>
+                </div>
+                <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">View Project →</a>
+              </div>
             </div>
           </div>
         </div>
-        {/* Right Side Container */}
-        <div className='w-2xl border border-blue-500'>
-
+        {/* Right Side Container (currently empty) */}
+        <div className='w-full md:w-md pl-5 pt-4'> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width. */}
+          {/* Services */}
+          <div className="w-80 h-40 mt-5">
+            <h2 className="text-black font-bold text-lg">Services</h2>
+            <div className="text-black mt-2">
+              <h3 className="mb-1">- Custom Software Application</h3>
+              <h3 className="mb-1">- Web Development</h3>
+              <h3 className="mb-1">- Mobile Development</h3>
+              <h3 className="mb-1">- SaaS Development</h3>
+            </div>
+          </div>
+          {/* Contacts */}
+          <div className="w-80 h-40 mt-5">
+            <h2 className="text-black font-bold text-lg">Contacts</h2>
+            <h1 className='text-md text-black pl-5 mt-3'>Phone</h1>
+            <div className='flex flex-row'>
+              <h2 className='text-sm text-gray-400 pl-5'>0968-2196-318</h2>
+            </div>
+            <h1 className='text-md text-black pl-5 mt-3'>Email</h1>
+            <div className='flex flex-row'>
+              <h2 className='text-sm text-gray-400 pl-5'>rolandojrhernandez0623200@gmail.com</h2>
+            </div>
+          </div>
+          {/* Social Media */}
+          <div className="w-80 h-30 mt-3">
+            <h2 className="text-black font-bold text-lg">Social Media</h2>
+            <div className='h-12 flex items-center'>
+              <GitHubIcon className='w-5 h-5 cursor-pointer'/>
+              <InstagramIcon className='w-20 h-5 cursor-pointer'/>
+              <LinkedInIcon className='w-5 h-5 cursor-pointer'/>            
+              <FacebookIcon className='w-5 h-5 cursor-pointer'/>
+            </div>
+          </div>
         </div>
       </div>
     </>
