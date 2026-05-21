@@ -98,33 +98,33 @@ function App() {
       </style>
       <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
         {/* Left Side Container */}
-        <div className="w-full md:w-lg h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 gap-2 "> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width and full viewport height. */}
-          <div className="text-white w-80 h-fit flex flex-col gap-3 items-center mb-10" >
+        <div className="w-full md:w-80 lg:w-96 h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 px-4 gap-2 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="text-white w-full max-w-xs h-fit flex flex-col gap-3 items-center mb-10" >
             {/* My Image */}
             <img src={myphoto} alt="Rolando Badillo Hernandez Jr." className="w-48 h-48 rounded-full border-4 border-white" /> {/* Added descriptive alt text for accessibility. */}
             {/* My Name */}
-            <h2 className="text-xl">Rolando Badillo Hernandez Jr.</h2>
+            <h2 className="text-xl text-center">Rolando Badillo Hernandez Jr.</h2>
             {/* My location */}
             <div className='w-full flex flex-row justify-center items-center gap-1 hover:text-red-500'>
               <MapPin className='w-3 h-3' />
               <h3 className='text-xs'><a href="https://maps.app.goo.gl/9PzyRR8uTxhctFDb9" target="_blank">San Antonio Santo Tomas, Batangas</a></h3>
             </div>
             {/* My Professions */}
-            <div className="text-2xl w-80 h-8 pl-13 flex items-center mt-5">
+            <div className="text-2xl w-full h-8 flex justify-center items-center mt-5">
               <h3>{displayedText}</h3>
             </div>
             {/* Buttons Schedule and Send Email */}
-            <div className="w-80 h-10 gap-2 flex justify-center item-center mt-3">
+            <div className="w-full max-w-xs flex flex-col sm:flex-row gap-2 justify-center items-center mt-3">
               <button
                 onClick={() => setShowSchedule(true)}
-                className="p-2 text-sm flex flex-row gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
-              <button className="p-2 text-sm flex flex-row gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" /><a href="http://rolandojrhernandez0623200@gmail.com" target="_blank">Send Email</a></button>
+                className="w-full p-2 text-sm flex flex-row justify-center items-center gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
+              <button className="w-full p-2 text-sm flex flex-row justify-center items-center gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" /><a href="mailto:rolandojrhernandez0623200@gmail.com" target="_blank">Send Email</a></button>
             </div>
           </div>
           {/* About */}
-          <div className="max-w-100 h-lg word-spacing-[0.5em] pb-5 font-sans">
-            <h2 className="text-white font-bold text-lg">About Me</h2>
-            <div className="text-white flex flex-col justify-normal mt-2 text-justify indent-8">
+          <div className="w-full h-auto pb-10 font-sans">
+            <h2 className="text-white font-bold text-lg px-4">About Me</h2>
+            <div className="text-white flex flex-col justify-normal mt-2 text-justify px-4"> {/* Changed indent-8 to px-4 for better mobile responsiveness */}
               <h3>I am a Full Stack Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools and development with user-centric mindset and focusing in creating significant features in software development that will bring solution in the real world problems. </h3> <br />
               <h3>After graduating in Computer Science, I struggled to find my path in the tech industry especially as a Software Engineer, but those challenges motivated me to grow, learn and now to build software solutions. </h3> <br />
               <h3>Now, I'm focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
@@ -133,18 +133,18 @@ function App() {
 
         </div>
         {/* Main Content Area (Middle Container) */}
-        <div className="w-full md:w-5xl h-auto md:h-lvh overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="w-full md:flex-1 h-auto md:h-lvh overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border border-red-500">
           {/* Education */}
-          <div className="w-3xl h-fit m-10 ml-20 reveal">
+          <div className="max-w-3xl w-full h-fit my-10 px-6 md:pl-20 reveal">
             {/* Timelime Education */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Education</h2>
               <div className="mt-5 relative border-l-4 border-gray-700 pl-4">
                 {/*Faith */}
-                <div className="mb-5 relative">
-                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700  hover:border-4 hover:border-blue-800"><img src={faithlogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-10'>
-                    <div className=''>
+                <div className="mb-8 relative">
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-blue-800"><img src={faithlogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-base text-black pl-5">Bachelor of Science in Computer
                         Science</h1>
                       <h3 className="text-sm text-gray-400 pl-5">Faith College: First Asia Institute of
@@ -158,10 +158,9 @@ function App() {
                 {/* Fidelis */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-green-600"><img src={fidelislogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-2xl flex flex-row items-center gap-5'>
-                    <div className='w-1xl'>
-                      <h1 className="text-base text-black pl-5">Technical Vocational Livelihood
-                        Information Communication and
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
+                      <h1 className="text-base text-black pl-5">TVL - Information Communication and
                         Technology</h1>
                       <h3 className="text-sm text-gray-400 pl-5">Faith College: Fidelis Senior High School</h3>
                     </div>
@@ -173,7 +172,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-60 ml-20 mb-52 reveal">
+          <div className="max-w-3xl w-full h-fit px-6 md:pl-20 mb-10 reveal">
             {/* Timelime Experience */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Experiences</h2>
@@ -181,8 +180,8 @@ function App() {
                 {/*Software Engineer Self Employed*/}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-green-900"><img src={rjrlogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-14'>
-                    <div className='w-70'>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-xl text-black pl-5">Software Engineer</h1>
                       <h3 className="text-sm text-gray-400 pl-5">Self Employed</h3>
                     </div>
@@ -194,8 +193,8 @@ function App() {
                 {/*Experience in Ionics */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-blue-900"><img src={ionicslogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-7'>
-                    <div className=''>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-xl text-black pl-5">Demand & Material Planner</h1>
                       <h3 className="text-sm text-gray-400 pl-5">IONICS Electronics Manufacturing Services, Inc.</h3>
                     </div>
@@ -207,8 +206,8 @@ function App() {
                 {/* Experience in Jco */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-orange-500"><img src={jcologo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-25'>
-                    <div className='w-60'>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-xl text-black pl-5">Inventory Controller</h1>
                       <h3 className="text-sm text-gray-400 pl-5">J.CO Donuts & Coffee</h3>
                     </div>
@@ -220,8 +219,8 @@ function App() {
                 {/* Experience in Jollibee */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-red-600"><img src={jollibeelogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-25'>
-                    <div className='w-60'>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-xl text-black pl-5">StockMan</h1>
                       <h3 className="text-sm text-gray-400 pl-5">Jollibee - Part Time</h3>
                     </div>
@@ -233,8 +232,8 @@ function App() {
                 {/* First wrote of Hello World */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-yellow-500"><img src={helloworldlogo} alt="" className="w-8 h-8 rounded-full" /></div>
-                  <div className='w-xl flex flex-row items-center gap-5'>
-                    <div className='w-80'>
+                  <div className='flex flex-col sm:flex-row sm:items-center justify-between gap-2'>
+                    <div className='pl-5'>
                       <h1 className="text-xl text-black pl-5">Hello World</h1>
                       <h3 className="text-sm text-gray-400 pl-5">Wrote my 1st “Hello World” program.</h3>
                     </div>
@@ -247,11 +246,11 @@ function App() {
             </div>
           </div>
           {/* Tech Stack  */}
-          <div className='w-3xl h-fit ml-20 mb-10 reveal'>
+          <div className='max-w-3xl w-full h-fit px-6 md:pl-20 mb-10 reveal'>
             <h1 className='text-2xl font-bold text-black'>Tech Stack</h1>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Frontend</h1>
-              <div className='flex flex-row mt-3'>
+              <div className='flex flex-wrap mt-3'>
                 <h2 className='text-sm text-gray-400 pl-5'>HTML / CSS</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>JavaScript</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>TypeScript</h2>
@@ -259,7 +258,7 @@ function App() {
             </div>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Framework</h1>
-              <div className='flex flex-row mt-3'>
+              <div className='flex flex-wrap mt-3'>
                 <h2 className='text-sm text-gray-400 pl-5'>React</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>Express.js</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>.Net</h2>
@@ -267,7 +266,7 @@ function App() {
             </div>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Backend</h1>
-              <div className='flex flex-ro mt-3'>
+              <div className='flex flex-wrap mt-3'>
                 <h2 className='text-sm text-gray-400 pl-5'>Node.js</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>PHP</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>Python</h2>
@@ -277,7 +276,7 @@ function App() {
             </div>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Database</h1>
-              <div className='flex flex-row mt-3'>
+              <div className='flex flex-wrap mt-3'>
                 <h2 className='text-sm text-gray-400 pl-5'>MySQL</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>MSSQL</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>MongoDB</h2>
@@ -287,7 +286,7 @@ function App() {
             </div>
             <div className='mt-3'>
               <h1 className='text-md text-black pl-5'>Development Tools</h1>
-              <div className='flex flex-row mt-3'>
+              <div className='flex flex-wrap mt-3'>
                 <h2 className='text-sm text-gray-400 pl-5'>VS Code</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>Visual Studio 2022</h2>
                 <h2 className='text-sm text-gray-400 pl-5'>Github</h2>
@@ -297,7 +296,7 @@ function App() {
             </div>
           </div>
           {/* Recent Projects */}
-          <div className='w-3xl h-fit ml-20 pb-20 reveal'>
+          <div className='max-w-3xl w-full h-fit px-6 md:pl-20 pb-20 reveal'>
             <h1 className='text-2xl font-bold text-black mb-6'>Recent Projects</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {/* Project 1 */}
@@ -340,24 +339,24 @@ function App() {
           </div>
         </div>
         {/* Right Side Container (currently empty) */}
-        <div className='w-full md:w-md pl-5 pt-4'> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width. */}
+        <div className='w-full md:w-80 lg:w-130 pl-5 pt-4 overflow-y-auto md:h-lvh [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border border-blue-500'>
           {/* Services */}
-          <div className="w-80 h-40 mt-5">
+          <div className="w-full max-w-xs h-auto mt-5">
             <h2 className="text-black font-bold text-lg">Services</h2>
             <div className="text-black mt-2">
-              <h3 className="mb-1">- Custom Software Application</h3>
-              <h3 className="mb-1">- Web Development</h3>
-              <h3 className="mb-1">- Mobile Development</h3>
-              <h3 className="mb-1">- SaaS Development</h3>
+              <h3 className="mb-1">Custom Software Application</h3>
+              <h3 className="mb-1">Web Development</h3>
+              <h3 className="mb-1">Mobile Development</h3>
+              <h3 className="mb-1">SaaS Development</h3>
             </div>
           </div>
           {/* Recent Certificates */}
-          <div className="max-w-2xl h-72 mt-5">
+          <div className="w-full max-w-xs mt-5">
             <h2 className="text-black font-bold text-lg">Recent Certificates</h2>
             <div className="mb-8 mt-5 relative">
               <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
-                <div className='w-80'>
+              <div className='flex flex-row items-center ml-10'>
+                <div className='w-full'>
                   <h1 className="text-md text-black pl-5">Subneting Fundamentals Course</h1>
                   <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
                 </div>
@@ -365,8 +364,8 @@ function App() {
             </div>
             <div className="mb-8 mt-5 relative">
               <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
-                <div className='w-80'>
+              <div className='flex flex-row items-center ml-10'>
+                <div className='w-full'>
                   <h1 className="text-md text-black pl-5">IPv4 Fundamentals Course</h1>
                   <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
                 </div>
@@ -374,8 +373,8 @@ function App() {
             </div>
             <div className="mb-8 mt-5 relative">
               <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
-                <div className='w-80'>
+              <div className='flex flex-row items-center ml-10'>
+                <div className='w-full'>
                   <h1 className="text-md text-black pl-5">VLAN Fundamentals Course</h1>
                   <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
                 </div>
@@ -383,7 +382,7 @@ function App() {
             </div>
           </div>
           {/* Social Media */}
-          <div className="w-80 h-30 mt-3">
+          <div className="w-full max-w-xs mt-3">
             <h2 className="text-black font-bold text-lg">Social Media</h2>
             <div className='h-12 flex items-center'>
               <GitHubIcon className='w-5 h-5 cursor-pointer'><a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank"></a></GitHubIcon>
