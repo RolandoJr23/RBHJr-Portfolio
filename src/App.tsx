@@ -30,6 +30,64 @@ function App() {
 
   const [showSchedule, setShowSchedule] = useState(false);
 
+  // Define Right Container content once to reuse in different positions
+  const RightSideContent = (
+    <>
+      {/* Services */}
+      <div className="w-full max-w-xs h-auto mt-8">
+        <h2 className="text-black font-bold text-lg">Services</h2>
+        <div className="text-black mt-2">
+          <h3 className="mb-1">Custom Software Application</h3>
+          <h3 className="mb-1">Web Development</h3>
+          <h3 className="mb-1">Mobile Development</h3>
+          <h3 className="mb-1">SaaS Development</h3>
+        </div>
+      </div>
+      {/* Recent Certificates */}
+      <div className="w-full max-w-xs mt-8">
+        <h2 className="text-black font-bold text-lg">Recent Certificates</h2>
+        <div className="mb-8 mt-5 relative">
+          <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+          <div className='flex flex-row items-center ml-10'>
+            <div className='w-full'>
+              <h1 className="text-md text-black pl-5">Subneting Fundamentals Course</h1>
+              <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+            </div>
+          </div>
+        </div>
+        <div className="mb-8 mt-8 relative">
+          <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+          <div className='flex flex-row items-center ml-10'>
+            <div className='w-full'>
+              <h1 className="text-md text-black pl-5">IPv4 Fundamentals Course</h1>
+              <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+            </div>
+          </div>
+        </div>
+        <div className="mb-8 mt-5 relative">
+          <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+          <div className='flex flex-row items-center ml-10'>
+            <div className='w-full'>
+              <h1 className="text-md text-black pl-5">VLAN Fundamentals Course</h1>
+              <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Social Media */}
+      <div className="w-full max-w-xs mt-3">
+        <h2 className="text-black font-bold text-lg">Social Media</h2>
+        <div className='h-12 flex items-center'>
+          <GitHubIcon className='w-5 h-5 cursor-pointer'><a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank"></a></GitHubIcon>
+          <InstagramIcon className='w-20 h-5 cursor-pointer' />
+          <LinkedInIcon className='w-5 h-5 cursor-pointer' />
+          <FacebookIcon className='w-5 h-5 cursor-pointer' />
+        </div>
+      </div>
+      <h3 className='text-center mt-14 mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
+    </>
+  );
+
   useEffect(() => {
     const handleTyping = () => {
       const currentRole = jobRoles[roleIndex % jobRoles.length];
@@ -96,9 +154,9 @@ function App() {
           }
         `}
       </style>
-      <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
+      <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 overflow-hidden">
         {/* Left Side Container */}
-        <div className="w-full md:w-80 lg:w-96 h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 px-4 gap-2 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="w-full md:w-96 lg:w-96 h-auto md:h-screen bg-gray-700 flex flex-col justify-baseline items-center pt-10 px-4 gap-2 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="text-white w-full max-w-xs h-fit flex flex-col gap-3 items-center mb-10" >
             {/* My Image */}
             <img src={myphoto} alt="Rolando Badillo Hernandez Jr." className="w-48 h-48 rounded-full border-4 border-white" /> {/* Added descriptive alt text for accessibility. */}
@@ -132,8 +190,10 @@ function App() {
           </div>
 
         </div>
-        {/* Main Content Area (Middle Container) */}
-        <div className="w-full md:flex-1 h-auto md:h-lvh overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border border-red-500">
+        {/* Wrapper to stack Middle and Right below 1500px while keeping Left as a sidebar */}
+        <div className="flex-1 h-auto md:h-screen overflow-y-auto min-[1500px]:overflow-hidden flex flex-col min-[1500px]:flex-row [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          {/* Main Content Area (Middle Container) */}
+          <div className="w-full min-[1500px]:flex-1 h-auto min-[1500px]:h-full overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {/* Education */}
           <div className="max-w-3xl w-full h-fit my-10 px-6 md:pl-20 reveal">
             {/* Timelime Education */}
@@ -296,7 +356,7 @@ function App() {
             </div>
           </div>
           {/* Recent Projects */}
-          <div className='max-w-3xl w-full h-fit px-6 md:pl-20 pb-20 reveal'>
+          <div className='max-w-3xl w-full h-fit px-6 md:pl-20 pb-10 reveal'>
             <h1 className='text-2xl font-bold text-black mb-6'>Recent Projects</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
               {/* Project 1 */}
@@ -337,62 +397,18 @@ function App() {
               </div>
             </div>
           </div>
+
+          {/* Right Side Content - Visible only below 1500px in the scroll flow */}
+          <div className='min-[1500px]:hidden max-w-3xl w-full px-6 md:pl-20 pb-10'>
+            {RightSideContent}
+          </div>
         </div>
-        {/* Right Side Container (currently empty) */}
-        <div className='w-full md:w-80 lg:w-130 pl-5 pt-4 overflow-y-auto md:h-lvh [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden border border-blue-500'>
-          {/* Services */}
-          <div className="w-full max-w-xs h-auto mt-5">
-            <h2 className="text-black font-bold text-lg">Services</h2>
-            <div className="text-black mt-2">
-              <h3 className="mb-1">Custom Software Application</h3>
-              <h3 className="mb-1">Web Development</h3>
-              <h3 className="mb-1">Mobile Development</h3>
-              <h3 className="mb-1">SaaS Development</h3>
-            </div>
-          </div>
-          {/* Recent Certificates */}
-          <div className="w-full max-w-xs mt-5">
-            <h2 className="text-black font-bold text-lg">Recent Certificates</h2>
-            <div className="mb-8 mt-5 relative">
-              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='flex flex-row items-center ml-10'>
-                <div className='w-full'>
-                  <h1 className="text-md text-black pl-5">Subneting Fundamentals Course</h1>
-                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
-                </div>
-              </div>
-            </div>
-            <div className="mb-8 mt-5 relative">
-              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='flex flex-row items-center ml-10'>
-                <div className='w-full'>
-                  <h1 className="text-md text-black pl-5">IPv4 Fundamentals Course</h1>
-                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
-                </div>
-              </div>
-            </div>
-            <div className="mb-8 mt-5 relative">
-              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
-              <div className='flex flex-row items-center ml-10'>
-                <div className='w-full'>
-                  <h1 className="text-md text-black pl-5">VLAN Fundamentals Course</h1>
-                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Social Media */}
-          <div className="w-full max-w-xs mt-3">
-            <h2 className="text-black font-bold text-lg">Social Media</h2>
-            <div className='h-12 flex items-center'>
-              <GitHubIcon className='w-5 h-5 cursor-pointer'><a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank"></a></GitHubIcon>
-              <InstagramIcon className='w-20 h-5 cursor-pointer' />
-              <LinkedInIcon className='w-5 h-5 cursor-pointer' />
-              <FacebookIcon className='w-5 h-5 cursor-pointer' />
-            </div>
-          </div>
-          <h3 className='text-center mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
+
+        {/* Right Side Container - Sidebar for screens >= 1500px */}
+        <div className='hidden min-[1500px]:block w-96 min-[1600px]:w-130 pl-5 pt-4 h-full overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden'>
+          {RightSideContent}
         </div>
+      </div>
       </div>
       {showSchedule && <Schedule onClose={() => setShowSchedule(false)} />}
     </>
