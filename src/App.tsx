@@ -1,17 +1,21 @@
-import { Mail, Calendar, ChevronDown, MapPin } from 'lucide-react';
+import { Mail, Calendar, MapPin } from 'lucide-react';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 import { useState, useEffect } from 'react';
+import Schedule from './components/Schedule';
 
-import myphoto from './assets/rbhjr.jpg';
+import myphoto from './assets/rbhjr.png';
 import faithlogo from './assets/faithlogooo.jpg';
 import fidelislogo from './assets/fedelislogo.png'
+import rjrlogo from './assets/rjrlogo.jpg';
 import ionicslogo from './assets/ionicslogo.webp';
 import jcologo from './assets/jcologo.png';
-import techacademylogo from './assets/techacademylogo.png';
+import jollibeelogo from './assets/jollibeelogo.png';
+import helloworldlogo from './assets/helloworldlogo.png';
+import techacademylogo from "./assets/techacademylogo.png";
 
 function App() {
   const jobRoles = ["Software Engineer", "Full Stack Developer", "Data Science", "Data Analyst"];
@@ -23,6 +27,8 @@ function App() {
   const deletingSpeed = 100; // milliseconds per character
   const pauseBeforeDelete = 1500; // milliseconds to pause after typing
   const pauseBeforeType = 500; // milliseconds to pause after deleting
+
+  const [showSchedule, setShowSchedule] = useState(false);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -109,7 +115,9 @@ function App() {
             </div>
             {/* Buttons Schedule and Send Email */}
             <div className="w-80 h-10 gap-2 flex justify-center item-center mt-3">
-              <button className="p-2 text-sm flex flex-row gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
+              <button
+                onClick={() => setShowSchedule(true)}
+                className="p-2 text-sm flex flex-row gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
               <button className="p-2 text-sm flex flex-row gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" /><a href="http://rolandojrhernandez0623200@gmail.com" target="_blank">Send Email</a></button>
             </div>
           </div>
@@ -119,7 +127,7 @@ function App() {
             <div className="text-white flex flex-col justify-normal mt-2 text-justify indent-8">
               <h3>I am a Full Stack Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools and development with user-centric mindset and focusing in creating significant features in software development that will bring solution in the real world problems. </h3> <br />
               <h3>After graduating in Computer Science, I struggled to find my path in the tech industry especially as a Software Engineer, but those challenges motivated me to grow, learn and now to build software solutions. </h3> <br />
-              <h3>Now, I’m focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
+              <h3>Now, I'm focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
             </div>
           </div>
 
@@ -165,11 +173,24 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="w-fit h-60 ml-20 reveal">
+          <div className="w-fit h-60 ml-20 mb-52 reveal">
             {/* Timelime Experience */}
             <div className="w-full">
               <h2 className="text-2xl font-bold text-black">Experiences</h2>
               <div className="mt-5 relative border-l-4 border-gray-700 pl-4">
+                {/*Software Engineer Self Employed*/}
+                <div className="mb-8 relative">
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-green-900"><img src={rjrlogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className='w-xl flex flex-row items-center gap-14'>
+                    <div className='w-70'>
+                      <h1 className="text-xl text-black pl-5">Software Engineer</h1>
+                      <h3 className="text-sm text-gray-400 pl-5">Self Employed</h3>
+                    </div>
+                    <div className='w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-green-900'>
+                      <h1>Present</h1>
+                    </div>
+                  </div>
+                </div>
                 {/*Experience in Ionics */}
                 <div className="mb-8 relative">
                   <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-blue-900"><img src={ionicslogo} alt="" className="w-8 h-8 rounded-full" /></div>
@@ -193,6 +214,32 @@ function App() {
                     </div>
                     <div className='w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-orange-400'>
                       <h1>October 2023 - August 2024</h1>
+                    </div>
+                  </div>
+                </div>
+                {/* Experience in Jollibee */}
+                <div className="mb-8 relative">
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-red-600"><img src={jollibeelogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className='w-xl flex flex-row items-center gap-25'>
+                    <div className='w-60'>
+                      <h1 className="text-xl text-black pl-5">StockMan</h1>
+                      <h3 className="text-sm text-gray-400 pl-5">Jollibee - Part Time</h3>
+                    </div>
+                    <div className='w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-red-600'>
+                      <h1>November 2022 - February 2023</h1>
+                    </div>
+                  </div>
+                </div>
+                {/* First wrote of Hello World */}
+                <div className="mb-8 relative">
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-yellow-500"><img src={helloworldlogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className='w-xl flex flex-row items-center gap-5'>
+                    <div className='w-80'>
+                      <h1 className="text-xl text-black pl-5">Hello World</h1>
+                      <h3 className="text-sm text-gray-400 pl-5">Wrote my 1st “Hello World” program.</h3>
+                    </div>
+                    <div className='w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-yellow-500'>
+                      <h1>Senior High - 2017</h1>
                     </div>
                   </div>
                 </div>
@@ -311,7 +358,7 @@ function App() {
               <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
               <div className='w-sm flex flex-row items-center gap-25 ml-10'>
                 <div className='w-80'>
-                  <h1 className="text-md text-black pl-5">Subnetting Fundamentals Course</h1>
+                  <h1 className="text-md text-black pl-5">Subneting Fundamentals Course</h1>
                   <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
                 </div>
               </div>
@@ -348,6 +395,7 @@ function App() {
           <h3 className='text-center mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
         </div>
       </div>
+      {showSchedule && <Schedule onClose={() => setShowSchedule(false)} />}
     </>
   )
 }
