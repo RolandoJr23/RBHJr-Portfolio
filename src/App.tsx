@@ -11,6 +11,7 @@ import faithlogo from './assets/faithlogooo.jpg';
 import fidelislogo from './assets/fedelislogo.png'
 import ionicslogo from './assets/ionicslogo.webp';
 import jcologo from './assets/jcologo.png';
+import techacademylogo from './assets/techacademylogo.png';
 
 function App() {
   const jobRoles = ["Software Engineer", "Full Stack Developer", "Data Science", "Data Analyst"];
@@ -91,33 +92,34 @@ function App() {
       </style>
       <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
         {/* Left Side Container */}
-        <div className="w-full md:w-2xl h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 gap-2 "> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width and full viewport height. */}
+        <div className="w-full md:w-lg h-auto md:h-lvh bg-gray-700 flex flex-col justify-baseline items-center pt-10 gap-2 "> {/* On mobile, take full width and auto height. On medium screens and up, revert to original width and full viewport height. */}
           <div className="text-white w-80 h-fit flex flex-col gap-3 items-center mb-10" >
             {/* My Image */}
             <img src={myphoto} alt="Rolando Badillo Hernandez Jr." className="w-48 h-48 rounded-full border-4 border-white" /> {/* Added descriptive alt text for accessibility. */}
             {/* My Name */}
             <h2 className="text-xl">Rolando Badillo Hernandez Jr.</h2>
             {/* My location */}
-            <div className='w-full flex flex-row justify-center items-center gap-1'>
+            <div className='w-full flex flex-row justify-center items-center gap-1 hover:text-red-500'>
               <MapPin className='w-3 h-3' />
-              <h3 className='text-xs'>San Antonio Santo Tomas, Batangas</h3>
+              <h3 className='text-xs'><a href="https://maps.app.goo.gl/9PzyRR8uTxhctFDb9" target="_blank">San Antonio Santo Tomas, Batangas</a></h3>
             </div>
             {/* My Professions */}
             <div className="text-2xl w-80 h-8 pl-13 flex items-center mt-5">
               <h3>{displayedText}</h3>
             </div>
             {/* Buttons Schedule and Send Email */}
-            <div className="w-80 h-10 gap-2 flex justify-center item-center">
+            <div className="w-80 h-10 gap-2 flex justify-center item-center mt-3">
               <button className="p-2 text-sm flex flex-row gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
-              <button className="p-2 text-sm flex flex-row gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" />Send Email</button>
+              <button className="p-2 text-sm flex flex-row gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" /><a href="http://rolandojrhernandez0623200@gmail.com" target="_blank">Send Email</a></button>
             </div>
           </div>
           {/* About */}
-          <div className="max-w-100 word-spacing-[0.5em] h-72 pb-5 font-sans border-b-2 border-white">
-            <h2 className="text-white font-bold text-lg">About</h2>
+          <div className="max-w-100 h-lg word-spacing-[0.5em] pb-5 font-sans">
+            <h2 className="text-white font-bold text-lg">About Me</h2>
             <div className="text-white flex flex-col justify-normal mt-2 text-justify indent-8">
-              <h3>I am a Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools for our specific task and to grow ourselves and for a better future and tomorrow.</h3> <br />
-              <h3>Now I'm focusing building applications with integration of AI-powered tools into a modern applications.</h3>
+              <h3>I am a Full Stack Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools and development with user-centric mindset and focusing in creating significant features in software development that will bring solution in the real world problems. </h3> <br />
+              <h3>After graduating in Computer Science, I struggled to find my path in the tech industry especially as a Software Engineer, but those challenges motivated me to grow, learn and now to build software solutions. </h3> <br />
+              <h3>Now, I’m focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
             </div>
           </div>
 
@@ -132,7 +134,7 @@ function App() {
               <div className="mt-5 relative border-l-4 border-gray-700 pl-4">
                 {/*Faith */}
                 <div className="mb-5 relative">
-                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-blue-800  hover:border-4"><img src={faithlogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700  hover:border-4 hover:border-blue-800"><img src={faithlogo} alt="" className="w-8 h-8 rounded-full" /></div>
                   <div className='w-xl flex flex-row items-center gap-10'>
                     <div className=''>
                       <h1 className="text-base text-black pl-5">Bachelor of Science in Computer
@@ -147,14 +149,13 @@ function App() {
                 </div>
                 {/* Fidelis */}
                 <div className="mb-8 relative">
-                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-green-600 hover:border-4"><img src={fidelislogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-green-600"><img src={fidelislogo} alt="" className="w-8 h-8 rounded-full" /></div>
                   <div className='w-2xl flex flex-row items-center gap-5'>
                     <div className='w-1xl'>
                       <h1 className="text-base text-black pl-5">Technical Vocational Livelihood
                         Information Communication and
                         Technology</h1>
-                      <h3 className="text-sm text-gray-400 pl-5">Technology
-                        Faith College: Fidelis Senior High School</h3>
+                      <h3 className="text-sm text-gray-400 pl-5">Faith College: Fidelis Senior High School</h3>
                     </div>
                     <div className='w-16 h-6 text-xs text-white rounded-md flex justify-center items-center bg-gray-700'>
                       <h1>2017-2019</h1>
@@ -171,7 +172,7 @@ function App() {
               <div className="mt-5 relative border-l-4 border-gray-700 pl-4">
                 {/*Experience in Ionics */}
                 <div className="mb-8 relative">
-                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-blue-900 hover:border-4"><img src={ionicslogo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-blue-900"><img src={ionicslogo} alt="" className="w-8 h-8 rounded-full" /></div>
                   <div className='w-xl flex flex-row items-center gap-7'>
                     <div className=''>
                       <h1 className="text-xl text-black pl-5">Demand & Material Planner</h1>
@@ -184,7 +185,7 @@ function App() {
                 </div>
                 {/* Experience in Jco */}
                 <div className="mb-8 relative">
-                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-orange-500 hover:border-4"><img src={jcologo} alt="" className="w-8 h-8 rounded-full" /></div>
+                  <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-10.5 border border-gray-700 hover:border-4 hover:border-orange-500"><img src={jcologo} alt="" className="w-8 h-8 rounded-full" /></div>
                   <div className='w-xl flex flex-row items-center gap-25'>
                     <div className='w-60'>
                       <h1 className="text-xl text-black pl-5">Inventory Controller</h1>
@@ -303,28 +304,48 @@ function App() {
               <h3 className="mb-1">- SaaS Development</h3>
             </div>
           </div>
-          {/* Contacts */}
-          <div className="w-80 h-40 mt-5">
-            <h2 className="text-black font-bold text-lg">Contacts</h2>
-            <h1 className='text-md text-black pl-5 mt-3'>Phone</h1>
-            <div className='flex flex-row'>
-              <h2 className='text-sm text-gray-400 pl-5'>0968-2196-318</h2>
+          {/* Recent Certificates */}
+          <div className="max-w-2xl h-72 mt-5">
+            <h2 className="text-black font-bold text-lg">Recent Certificates</h2>
+            <div className="mb-8 mt-5 relative">
+              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
+                <div className='w-80'>
+                  <h1 className="text-md text-black pl-5">Subnetting Fundamentals Course</h1>
+                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+                </div>
+              </div>
             </div>
-            <h1 className='text-md text-black pl-5 mt-3'>Email</h1>
-            <div className='flex flex-row'>
-              <h2 className='text-sm text-gray-400 pl-5'>rolandojrhernandez0623200@gmail.com</h2>
+            <div className="mb-8 mt-5 relative">
+              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
+                <div className='w-80'>
+                  <h1 className="text-md text-black pl-5">IPv4 Fundamentals Course</h1>
+                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+                </div>
+              </div>
+            </div>
+            <div className="mb-8 mt-5 relative">
+              <div className="absolute flex justify-center items-center w-12 h-12 bg-white rounded-full -left-0 border border-gray-700 hover:border-4 hover:border-black"><img src={techacademylogo} alt="" className="w-8 h-8 rounded-full" /></div>
+              <div className='w-sm flex flex-row items-center gap-25 ml-10'>
+                <div className='w-80'>
+                  <h1 className="text-md text-black pl-5">VLAN Fundamentals Course</h1>
+                  <h3 className="text-sm text-gray-400 pl-5">Tech Academy</h3>
+                </div>
+              </div>
             </div>
           </div>
           {/* Social Media */}
           <div className="w-80 h-30 mt-3">
             <h2 className="text-black font-bold text-lg">Social Media</h2>
             <div className='h-12 flex items-center'>
-              <GitHubIcon className='w-5 h-5 cursor-pointer'/>
-              <InstagramIcon className='w-20 h-5 cursor-pointer'/>
-              <LinkedInIcon className='w-5 h-5 cursor-pointer'/>            
-              <FacebookIcon className='w-5 h-5 cursor-pointer'/>
+              <GitHubIcon className='w-5 h-5 cursor-pointer'><a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank"></a></GitHubIcon>
+              <InstagramIcon className='w-20 h-5 cursor-pointer' />
+              <LinkedInIcon className='w-5 h-5 cursor-pointer' />
+              <FacebookIcon className='w-5 h-5 cursor-pointer' />
             </div>
           </div>
+          <h3 className='text-center mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
         </div>
       </div>
     </>
