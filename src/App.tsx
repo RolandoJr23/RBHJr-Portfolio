@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import CalcomSchedule from './components/CalcomSchedule';
+import ChatIcons from './components/ChatIcons';
+import ChatSession from './components/ChatSession';
 import { certificates, type Certificate } from './Files/Certificates';
 import CertificateModal from './components/CertificateModal';
 
@@ -33,6 +35,7 @@ function App() {
   const pauseBeforeType = 500; // milliseconds to pause after deleting
 
   const [showSchedule, setShowSchedule] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
   const timelineRailClass = "mt-5 relative border-l-0 max-[767px]:ml-8 max-[767px]:border-l-4 min-[960px]:ml-0 min-[960px]:border-l-4 border-gray-700 pl-0 max-[767px]:pl-4 min-[960px]:pl-4";
@@ -421,6 +424,10 @@ function App() {
             {RightSideContent}
           </div>
         </div>
+      </div>
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        {showChat && <ChatSession onClose={() => setShowChat(false)} />}
+        <ChatIcons isOpen={showChat} onClick={() => setShowChat((prev) => !prev)} />
       </div>
       {showSchedule && <CalcomSchedule onClose={() => setShowSchedule(false)} />}
       {selectedCert && (<CertificateModal certificate={selectedCert} onClose={() => setSelectedCert(null)} />
