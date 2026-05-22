@@ -294,7 +294,7 @@ function App() {
             <div className="w-full max-w-xs flex flex-col sm:flex-row gap-2 justify-center items-center mt-3">
               <button
                 onClick={() => setShowSchedule(true)}
-                className="w-full p-2 text-sm flex flex-row justify-center items-center gap-2 text-white bg-black rounded-md hover:text-black hover:bg-white duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
+                className="w-full p-2 text-sm flex flex-row justify-center items-center gap-2 text-black bg-white rounded-md hover:text-white hover:bg-black duration-300 cursor-pointer"><Calendar className="w-5 h-5" />Schedule a Call</button>
               <button className="w-full p-2 text-sm flex flex-row justify-center items-center gap-2 text-white border-2 border-white rounded-md hover:text-black hover:bg-white cursor-pointer"><Mail className="w-5 h-5" /><a href="mailto:rolandojrhernandez0623200@gmail.com" target="_blank">Send Email</a></button>
             </div>
           </div>
