@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import Schedule from './components/Schedule';
+import CalcomSchedule from './components/CalcomSchedule';
 import { certificates, type Certificate } from './Files/Certificates';
 import CertificateModal from './components/CertificateModal';
 
@@ -48,9 +48,8 @@ function App() {
       <div className="w-full max-w-xs h-auto mt-8">
         <h2 className="text-black font-bold text-lg">Services</h2>
         <div className="text-black mt-2">
-          <h3 className="mb-1">Custom Software Application</h3>
+          <h3 className="mb-1">Web Design</h3>
           <h3 className="mb-1">Web Development</h3>
-          <h3 className="mb-1">Mobile Development</h3>
           <h3 className="mb-1">SaaS Development</h3>
         </div>
       </div>
@@ -196,9 +195,9 @@ function App() {
           <div className="w-full h-auto pb-10 font-sans reveal reveal-top">
             <h2 className="text-white font-bold text-lg px-4">About Me</h2>
             <div className="text-white flex flex-col justify-normal mt-2 text-justify px-4"> {/* Changed indent-8 to px-4 for better mobile responsiveness */}
-              <h3>I am a Full Stack Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools and development with user-centric mindset and focusing in creating significant features in software development that will bring solution in the real world problems. </h3> <br />
-              <h3>After graduating in Computer Science, I struggled to find my path in the tech industry especially as a Software Engineer, but those challenges motivated me to grow, learn and now to build software solutions. </h3> <br />
-              <h3>Now, I'm focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
+              <h3 className='indent-12'>I am a Full Stack Software Engineer with the goal of developing solutions and solving real world problems through applications that have the concreteness of an efficient and high quality tools and development with user-centric mindset and focusing in creating significant features in software development that will bring solution in the real world problems. </h3> <br />
+              <h3 className='indent-12'>After graduating in Computer Science, I struggled to find my path in the tech industry especially as a Software Engineer, but those challenges motivated me to grow, learn and now to build software solutions. </h3> <br />
+              <h3 className='indent-12'>Now, I'm focused and actively on building modern applications that integrate AI-powered tools to create smarter, more efficient, and innovative digital solutions.</h3>
             </div>
           </div>
 
@@ -406,7 +405,7 @@ function App() {
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>BlockAIStudy</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</p>
                   </div>
-                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">View Project →</a>
+                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">Live →</a>
                 </div>
               </div>
             </div>
@@ -423,7 +422,7 @@ function App() {
           </div>
         </div>
       </div>
-      {showSchedule && <Schedule onClose={() => setShowSchedule(false)} />}
+      {showSchedule && <CalcomSchedule onClose={() => setShowSchedule(false)} />}
       {selectedCert && (<CertificateModal certificate={selectedCert} onClose={() => setSelectedCert(null)} />
       )}
     </>
