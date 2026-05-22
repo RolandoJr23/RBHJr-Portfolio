@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import CalcomSchedule from './components/CalcomSchedule';
+import Darkmode from './components/Darkmode';
 import ChatIcons from './components/ChatIcons';
 import ChatSession from './components/ChatSession';
 import { certificates, type Certificate } from './Files/Certificates';
@@ -36,6 +37,25 @@ function App() {
 
   const [showSchedule, setShowSchedule] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [themeMode, setThemeMode] = useState(() => {
+    if (typeof window === 'undefined') return 'system';
+
+    const savedThemeMode = localStorage.getItem('portfolio-theme-mode');
+    if (savedThemeMode === 'light' || savedThemeMode === 'dark' || savedThemeMode === 'system') {
+      return savedThemeMode;
+    }
+
+    const legacyTheme = localStorage.getItem('portfolio-theme');
+    if (legacyTheme === 'light' || legacyTheme === 'dark') {
+      return legacyTheme;
+    }
+
+    return 'system';
+  });
+  const [systemPrefersDark, setSystemPrefersDark] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
   const timelineRailClass = "mt-5 relative border-l-0 max-[767px]:ml-8 max-[767px]:border-l-4 min-[960px]:ml-0 min-[960px]:border-l-4 border-gray-700 pl-0 max-[767px]:pl-4 min-[960px]:pl-4";
@@ -43,6 +63,9 @@ function App() {
   const timelineIconPosition = "max-[767px]:mb-0 max-[767px]:absolute max-[767px]:-left-[2.75rem] max-[767px]:top-0 min-[960px]:mb-0 min-[960px]:absolute min-[960px]:-left-[2.75rem] min-[960px]:top-0";
   const timelineContentClass = "pl-0 max-[767px]:pl-5 min-[960px]:pl-5";
   const timelineDateClass = "max-[767px]:ml-10 max-[767px]:w-[calc(100%-3.25rem)]";
+  const isDarkMode = themeMode === 'dark' || (themeMode === 'system' && systemPrefersDark);
+  const getExperienceBadgeClass = (lightClass: string) =>
+    `${isDarkMode ? 'bg-gray-700' : lightClass} text-white`;
 
   // Define Right Container content once to reuse in different positions
   const RightSideContent = (
@@ -87,7 +110,7 @@ function App() {
           <FacebookIcon className='w-5 h-5 cursor-pointer' />
         </div>
       </div>
-      <h3 className='text-center mt-14 mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
+      <h3 className='text-center mt-14 mb-10'>&copy; 2026 Rolando Jr Hernandez. All rights reserved.</h3>
     </>
   );
 
@@ -142,6 +165,35 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('portfolio-theme-mode', themeMode);
+    localStorage.setItem('portfolio-theme', isDarkMode ? 'dark' : 'light');
+  }, [themeMode, isDarkMode]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (event: MediaQueryListEvent) => {
+      setSystemPrefersDark(event.matches);
+    };
+
+    setSystemPrefersDark(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  const handleThemeToggle = () => {
+    setThemeMode((currentMode) => {
+      if (currentMode === 'light') return 'dark';
+      if (currentMode === 'dark') return 'system';
+      return 'light';
+    });
+  };
+
   return (
     <>
       <style>
@@ -166,6 +218,58 @@ function App() {
           }
           .reveal-active.reveal-bottom {
             transform: translateY(0);
+          }
+
+          .portfolio-dark {
+            background: #0f172a;
+            color: #e5e7eb;
+          }
+          .portfolio-dark .bg-gray-50 {
+            background-color: #0f172a !important;
+          }
+          .portfolio-dark .bg-white {
+            background-color: #111827 !important;
+          }
+          .portfolio-dark .bg-gray-700 {
+            background-color: #1f2937 !important;
+          }
+          .portfolio-dark .bg-gray-900 {
+            background-color: #030712 !important;
+          }
+          .portfolio-dark .text-black {
+            color: #f9fafb !important;
+          }
+          .portfolio-dark .text-gray-400 {
+            color: #9ca3af !important;
+          }
+          .portfolio-dark .text-gray-500 {
+            color: #9ca3af !important;
+          }
+          .portfolio-dark .text-gray-700 {
+            color: #d1d5db !important;
+          }
+          .portfolio-dark .text-gray-900 {
+            color: #f9fafb !important;
+          }
+          .portfolio-dark .border-gray-100 {
+            border-color: #1f2937 !important;
+          }
+          .portfolio-dark .border-gray-200 {
+            border-color: #374151 !important;
+          }
+          .portfolio-dark .border-gray-700 {
+            border-color: #4b5563 !important;
+          }
+          .portfolio-dark .shadow-sm,
+          .portfolio-dark .shadow-md,
+          .portfolio-dark .shadow-lg,
+          .portfolio-dark .shadow-xl,
+          .portfolio-dark .shadow-2xl {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+          }
+          .portfolio-dark input,
+          .portfolio-dark button:not([class*='bg-black']) {
+            color: inherit;
           }
         `}
       </style>
@@ -206,9 +310,9 @@ function App() {
 
         </div>
         {/* Wrapper to stack Middle and Right below 1500px while keeping Left as a sidebar */}
-        <div className="flex-1 h-auto md:h-screen overflow-y-auto min-[1500px]:overflow-hidden flex flex-col min-[1500px]:flex-row [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className={`flex-1 h-auto md:h-screen overflow-y-auto min-[1500px]:overflow-hidden flex flex-col min-[1500px]:flex-row [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${isDarkMode ? 'portfolio-dark' : ''}`}>
           {/* Main Content Area (Middle Container) */}
-          <div className="w-full min-[1500px]:flex-1 h-auto min-[1500px]:h-full overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="relative w-full min-[1500px]:flex-1 h-auto min-[1500px]:h-full overflow-y-auto overflow-x-hidden scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {/* Education */}
             <div className="max-w-3xl w-full h-fit my-10 px-6 md:pl-20 reveal">
               {/* Timelime Education */}
@@ -260,7 +364,7 @@ function App() {
                         <h1 className="text-xl text-black pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Software Engineer</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Self Employed</h3>
                       </div>
-                      <div className={`w-full sm:w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-green-900 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-48 h-6 text-xs rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-green-900')} ${timelineDateClass}`}>
                         <h1>Present</h1>
                       </div>
                     </div>
@@ -273,7 +377,7 @@ function App() {
                         <h1 className="text-xl text-black pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Demand & Material Planner</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">IONICS Electronics Manufacturing Services, Inc.</h3>
                       </div>
-                      <div className={`w-full sm:w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-blue-900 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-48 h-6 text-xs rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-blue-900')} ${timelineDateClass}`}>
                         <h1>May 2025 - August 2025</h1>
                       </div>
                     </div>
@@ -286,7 +390,7 @@ function App() {
                         <h1 className="text-xl text-black pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Inventory Controller</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">J.CO Donuts & Coffee</h3>
                       </div>
-                      <div className={`w-full sm:w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-orange-400 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-48 h-6 text-xs rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-orange-400')} ${timelineDateClass}`}>
                         <h1>October 2023 - August 2024</h1>
                       </div>
                     </div>
@@ -299,7 +403,7 @@ function App() {
                         <h1 className="text-xl text-black pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">StockMan</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Jollibee - Part Time</h3>
                       </div>
-                      <div className={`w-full sm:w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-red-600 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-48 h-6 text-xs rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-red-600')} ${timelineDateClass}`}>
                         <h1>November 2022 - February 2023</h1>
                       </div>
                     </div>
@@ -312,7 +416,7 @@ function App() {
                         <h1 className="text-xl text-black pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Hello World</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Wrote my 1st “Hello World” program.</h3>
                       </div>
-                      <div className={`w-full sm:w-48 h-6 text-xs text-white rounded-md flex justify-center items-center bg-yellow-500 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-48 h-6 text-xs rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-yellow-500')} ${timelineDateClass}`}>
                         <h1>Senior High - 2017</h1>
                       </div>
                     </div>
@@ -399,7 +503,7 @@ function App() {
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>FINDSup</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Web-based application that connects local businesses with nearby suppliers and service providers.</p>
                   </div>
-                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">View Project →</a>
+                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors">View Project →</a>
                 </div>
 
                 {/* Project 4 */}
@@ -426,8 +530,11 @@ function App() {
         </div>
       </div>
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        {showChat && <ChatSession onClose={() => setShowChat(false)} />}
-        <ChatIcons isOpen={showChat} onClick={() => setShowChat((prev) => !prev)} />
+        {showChat && <ChatSession onClose={() => setShowChat(false)} isDarkMode={isDarkMode} />}
+        <div className="flex items-center gap-3">
+          <Darkmode themeMode={themeMode} isDarkMode={isDarkMode} onToggle={handleThemeToggle} />
+          <ChatIcons isOpen={showChat} onClick={() => setShowChat((prev) => !prev)} />
+        </div>
       </div>
       {showSchedule && <CalcomSchedule onClose={() => setShowSchedule(false)} />}
       {selectedCert && (<CertificateModal certificate={selectedCert} onClose={() => setSelectedCert(null)} />

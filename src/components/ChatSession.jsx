@@ -15,6 +15,22 @@ const createAssistantReply = (rawMessage) => {
     return 'Hello! I am Rolando’s portfolio assistant. Ask me about projects, experience, skills, or contact details.';
   }
 
+  if (message.includes('what is your preferred framework?') || (message.includes('framework'))) {
+    return 'My preferred framework as a Full Stack Developer is React framework or library.';
+  }
+
+  if (message.includes('what is your preferred backend?') || (message.includes('backend'))) {
+    return 'My preferred backend as a Full Stack Developer is Node.js or Python.';
+  }
+
+  if (message.includes('what is your preferred database?') || (message.includes('database'))) {
+    return 'My preferred database are both SQL NoSQL (MongoDB) and SQL (PostgreSQL).';
+  }
+
+  if (message.includes('what is your preferred development tools?') || (message.includes('tools'))) {
+    return 'My preferred development tool is VSCode.';
+  }
+
   if (message.includes('what is your thesis project') || (message.includes('thesis') && message.includes('project'))) {
     return 'My Thesis Project is the Title Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two Main Roads in Tanauan City, Batangas. It is built in Python and uses the YOLOv8 algorithm.';
   }
@@ -32,15 +48,15 @@ const createAssistantReply = (rawMessage) => {
   }
 
   if (message.includes('project') || message.includes('portfolio') || message.includes('work')) {
-    return 'I can tell you about the Recent Projects section, including Thesis Project, Point of Sales, FINDSup, and BlockAIStudy.';
+    return 'I can tell you that my Recent Projects are My thesis project, Point of Sales, FINDSup, and BlockAIStudy.';
   }
 
   if (message.includes('experience') || message.includes('job') || message.includes('work history')) {
-    return 'Rolando has experience as a Software Engineer, Demand & Material Planner, Inventory Controller, and StockMan, with a strong focus on full-stack development.';
+    return `My previous job experiences are Demand & Material Planner, Inventory Controller, and StockMan. Now I've continued developing software and pushing my dream.`;
   }
 
   if (message.includes('skill') || message.includes('tech') || message.includes('stack')) {
-    return 'His tech stack includes React, TypeScript, JavaScript, Node.js, Express.js, PHP, Python, C#, MySQL, MSSQL, MongoDB, PostgreSQL, and Supabase.';
+    return 'My skills in the tech stack are React, TypeScript, JavaScript, Node.js, Express.js, PHP, Python, C#, MySQL, MSSQL, MongoDB, PostgreSQL, and Supabase.';
   }
 
   if (message.includes('contact') || message.includes('email') || message.includes('reach')) {
@@ -52,21 +68,50 @@ const createAssistantReply = (rawMessage) => {
   }
 
   if (message.includes('about') || message.includes('who are you')) {
-    return 'Rolando is a Full Stack Software Engineer focused on building practical, user-centric software and AI-powered tools.';
+    return `My name is Rolando I'm a Full Stack Software Engineer focused on building software solutions, development with user-centric mindset, building modern software with integrated AI-powered tools.`;
   }
 
   if (message.includes('certificate') || message.includes('cert')) {
-    return 'The portfolio also includes recent certificates, which you can explore in the timeline section.';
+    return 'My portfolio includes recent certificates I have received, which you can explore in the timeline section.';
   }
 
   if (message.includes('github') || message.includes('source')) {
     return 'You can check the social links section for GitHub and other platforms.';
   }
 
-  return 'Thanks for the message. Try asking about projects, experience, tech stack, contact details, or scheduling a call.';
+  return 'Thanks for the message. Try asking about projects, experience, skill on tech stack, contact details, or scheduling a call.';
 };
 
-const ChatSession = ({ onClose }) => {
+const ChatSession = ({ onClose, isDarkMode = false }) => {
+  const shellClass = isDarkMode
+    ? 'border-gray-700 bg-slate-900 text-slate-100 shadow-2xl shadow-black/40'
+    : 'border-gray-200 bg-white text-gray-900 shadow-2xl shadow-black/20';
+
+  const headerClass = isDarkMode
+    ? 'border-gray-700 bg-slate-950 text-white'
+    : 'border-gray-100 bg-gray-700 text-white';
+
+  const bodyClass = isDarkMode ? 'bg-slate-900' : 'bg-gray-50';
+  const footerClass = isDarkMode ? 'border-gray-700 bg-slate-900' : 'border-gray-100 bg-white';
+  const quickPromptClass = isDarkMode
+    ? 'border-gray-600 bg-slate-800 text-slate-200 hover:border-white hover:text-white'
+    : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-black hover:text-black';
+  const inputClass = isDarkMode
+    ? 'border-gray-600 bg-slate-800 text-white placeholder:text-slate-400 focus:border-white focus:bg-slate-900'
+    : 'border-gray-200 bg-gray-50 text-gray-900 placeholder:text-gray-400 focus:border-black focus:bg-white';
+  const assistantBubbleClass = isDarkMode
+    ? 'rounded-tl-sm bg-slate-800 text-slate-100'
+    : 'rounded-tl-sm bg-white text-gray-700';
+  const typingClass = isDarkMode
+    ? 'rounded-tl-sm bg-slate-800 text-slate-300'
+    : 'rounded-tl-sm bg-white text-gray-500';
+  const closeClass = isDarkMode
+    ? 'text-slate-300 hover:bg-white/10 hover:text-white'
+    : 'text-gray-200 hover:bg-white/10 hover:text-white';
+  const sendClass = isDarkMode
+    ? 'bg-white text-slate-900 hover:bg-slate-200 disabled:bg-slate-600'
+    : 'bg-black text-white hover:bg-gray-800 disabled:bg-gray-300';
+
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -137,8 +182,8 @@ const ChatSession = ({ onClose }) => {
   };
 
   return (
-    <div className="w-[min(92vw,22rem)] overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl shadow-black/20">
-      <div className="flex items-center justify-between border-b border-gray-100 bg-gray-700 px-4 py-3 text-white">
+    <div className={`w-[min(92vw,22rem)] overflow-hidden rounded-3xl border ${shellClass}`}>
+      <div className={`flex items-center justify-between border-b px-4 py-3 ${headerClass}`}>
         <div className="flex items-center gap-3">
           <img
             src={myphoto}
@@ -154,20 +199,20 @@ const ChatSession = ({ onClose }) => {
           type="button"
           onClick={onClose}
           aria-label="Close chat"
-          className="rounded-full p-2 text-gray-200 transition-colors hover:bg-white/10 hover:text-white"
+          className={`rounded-full p-2 transition-colors ${closeClass}`}
         >
           <X className="h-4 w-4" />
         </button>
       </div>
 
-      <div className="max-h-80 space-y-3 overflow-y-auto bg-gray-50 px-4 py-4">
+      <div className={`max-h-80 space-y-3 overflow-y-auto px-4 py-4 ${bodyClass}`}>
         {messages.map((message) => (
           <div
             key={message.id}
             className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm shadow-sm ${
               message.role === 'user'
                 ? 'ml-auto rounded-tr-sm bg-black text-white'
-                : 'rounded-tl-sm bg-white text-gray-700'
+                : assistantBubbleClass
             }`}
           >
             {message.text}
@@ -175,7 +220,7 @@ const ChatSession = ({ onClose }) => {
         ))}
 
         {isTyping && (
-          <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-white px-3 py-2 text-sm text-gray-500 shadow-sm">
+          <div className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm shadow-sm ${typingClass}`}>
             Typing...
           </div>
         )}
@@ -183,14 +228,14 @@ const ChatSession = ({ onClose }) => {
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="border-t border-gray-100 bg-white px-3 py-3">
+      <div className={`border-t px-3 py-3 ${footerClass}`}>
         <div className="mb-3 flex flex-wrap gap-2">
           {quickPrompts.map((prompt) => (
             <button
               key={prompt}
               type="button"
               onClick={() => handleQuickPrompt(prompt)}
-              className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-700 transition-colors hover:border-black hover:text-black"
+              className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs transition-colors ${quickPromptClass}`}
             >
               <Sparkles className="h-3 w-3" />
               {prompt}
@@ -205,13 +250,13 @@ const ChatSession = ({ onClose }) => {
             onChange={(event) => setInputValue(event.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Type a message..."
-            className="min-w-0 flex-1 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm outline-none transition-colors placeholder:text-gray-400 focus:border-black focus:bg-white"
+            className={`min-w-0 flex-1 rounded-full border px-4 py-2 text-sm outline-none transition-colors ${inputClass}`}
           />
           <button
             type="button"
             onClick={sendMessage}
             disabled={!canSend}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-gray-800 disabled:cursor-not-allowed disabled:bg-gray-300"
+            className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors disabled:cursor-not-allowed ${sendClass}`}
             aria-label="Send message"
           >
             <Send className="h-4 w-4" />
