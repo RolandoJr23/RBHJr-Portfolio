@@ -8,10 +8,10 @@ const ChatIcons = ({ isOpen, onClick }) => {
       type="button"
       onClick={onClick}
       aria-label={isOpen ? 'Close chat' : 'Open chat'}
-      className="relative flex h-14 w-14 items-center justify-center rounded-full border bg-gray-700 text-white shadow-lg shadow-black/20 transition-all duration-300 hover:scale-105 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-black/20"
+      className="relative flex h-12 w-12 items-center justify-center rounded-full border bg-gray-700 text-white shadow-black/20 transition-all duration-300 hover:scale-105 hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-black/20"
     >
       <MessageCircleMore className="h-7 w-7" />
-      <span className="absolute right-0 top-0 h-4 w-4 rounded-full  bg-green-500 shadow-sm" />
+      <span className="absolute right-0 top-0 h-3 w-3 rounded-full  bg-green-500 shadow-sm" />
     </button>
   );
 };

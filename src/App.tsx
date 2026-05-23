@@ -5,9 +5,11 @@ import Darkmode from './components/Darkmode';
 import ChatIcons from './components/ChatIcons';
 import ChatSession from './components/ChatSession';
 import { certificates, type Certificate } from './Files/Certificates';
+import { projectdetails, type ProjectDetails } from './Files/ProjectDetails';
 import CertificateModal from './components/CertificateModal';
+import ProjectModal from './components/ProjectDetails';
 
-import { Mail, Calendar, MapPin } from 'lucide-react';
+import { Mail, Calendar, MapPin, FolderOpen } from 'lucide-react';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -57,6 +59,7 @@ function App() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
 
   const timelineRailClass = "mt-5 relative border-l-0 max-[767px]:ml-8 max-[767px]:border-l-4 min-[960px]:ml-0 min-[960px]:border-l-4 border-gray-700 pl-0 max-[767px]:pl-4 min-[960px]:pl-4";
   const timelineIconClass = "flex justify-center items-center w-12 h-12 mb-3 bg-white rounded-full border border-gray-700";
@@ -65,7 +68,7 @@ function App() {
   const timelineDateClass = "max-[767px]:ml-10 max-[767px]:w-[calc(100%-3.25rem)]";
   const isDarkMode = themeMode === 'dark' || (themeMode === 'system' && systemPrefersDark);
   const getExperienceBadgeClass = (lightClass: string) =>
-    `${isDarkMode ? 'bg-gray-700' : lightClass} text-white`;
+    `${isDarkMode ? 'bg-gray-600' : lightClass} text-white`;
 
   // Define Right Container content once to reuse in different positions
   const RightSideContent = (
@@ -221,7 +224,7 @@ function App() {
           }
 
           .portfolio-dark {
-            background: #0f172a;
+            background: #212838;
             color: #e5e7eb;
           }
           .portfolio-dark .bg-gray-50 {
@@ -329,7 +332,7 @@ function App() {
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Faith College: First Asia Institute of
                           Technology and Humanities</h3>
                       </div>
-                      <div className={`w-full sm:w-16 h-6 text-xs text-white rounded-md flex justify-center items-center bg-gray-700 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-16 h-6 text-xs text-white rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-gray-700')} ${timelineDateClass}`}>
                         <h1>2019-2023</h1>
                       </div>
                     </div>
@@ -343,7 +346,7 @@ function App() {
                           Technology</h1>
                         <h3 className="text-sm text-gray-400 pl-0 max-[767px]:pl-5 min-[1200px]:pl-5">Faith College: Fidelis Senior High School</h3>
                       </div>
-                      <div className={`w-full sm:w-16 h-6 text-xs text-white rounded-md flex justify-center items-center bg-gray-700 ${timelineDateClass}`}>
+                      <div className={`w-full sm:w-16 h-6 text-xs text-white rounded-md flex justify-center items-center ${getExperienceBadgeClass('bg-gray-700')} ${timelineDateClass}`}>
                         <h1>2017-2019</h1>
                       </div>
                     </div>
@@ -479,40 +482,80 @@ function App() {
               <h1 className='text-2xl font-bold text-black mb-6'>Recent Projects</h1>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 {/* Project 1 */}
-                <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>My Thesis Project</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two Main Roads in Tanauan City, Batangas Build in Python and Yolov8 Algorithm</p>
                   </div>
-                  <button className='mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors'>View Demo →</button>
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(projectdetails[0])}
+                      className={`inline-flex items-center gap-2 border-0 bg-transparent p-0 text-left text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`}
+                    >
+                      <FolderOpen className="w-4 h-4" />
+                      Open Folder
+                    </button>
+                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                  </div>
                 </div>
 
                 {/* Project 2 */}
-                <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>Point of Sales</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Point of Sales (POS) System in Modern UI/UX using Dynamic User Control for efficiency and
                       reliable experience for improving accuracy, reduce error and improvise sales products.</p>
                   </div>
-                  <button className='mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors'>View Demo →</button>
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(projectdetails[1])}
+                      className={`inline-flex items-center gap-2 border-0 bg-transparent p-0 text-left text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`}
+                    >
+                      <FolderOpen className="w-4 h-4" />
+                      Open Folder
+                    </button>
+                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                  </div>
                 </div>
 
                 {/* Project 3 */}
-                <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div className={`group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>FINDSup</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Web-based application that connects local businesses with nearby suppliers and service providers.</p>
                   </div>
-                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start cursor-pointer transition-colors">View Project →</a>
+                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(projectdetails[2])}
+                      className={`inline-flex items-center gap-2 border-0 bg-transparent p-0 text-left text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`}
+                    >
+                      <FolderOpen className="w-4 h-4" />
+                      Open Folder
+                    </button>
+                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                  </div>
                 </div>
 
                 {/* Project 4 */}
-                <div className='group bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between'>
+                <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>BlockAIStudy</h1>
                     <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</p>
                   </div>
-                  <a href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer" className="mt-4 text-sm text-blue-600 hover:text-blue-800 font-bold self-start transition-colors">Live →</a>
+                  <div className="mt-4 flex flex-wrap items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(projectdetails[3])}
+                      className={`inline-flex items-center gap-2 border-0 bg-transparent p-0 text-left text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`}
+                    >
+                      <FolderOpen className="w-4 h-4" />
+                      Open Folder
+                    </button>
+                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer">Live →</a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -531,12 +574,18 @@ function App() {
       </div>
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
         {showChat && <ChatSession onClose={() => setShowChat(false)} isDarkMode={isDarkMode} />}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center p-2 gap-3 rounded-3xl bg-gray-700 shadow-lg">
           <Darkmode themeMode={themeMode} isDarkMode={isDarkMode} onToggle={handleThemeToggle} />
           <ChatIcons isOpen={showChat} onClick={() => setShowChat((prev) => !prev)} />
         </div>
       </div>
       {showSchedule && <CalcomSchedule onClose={() => setShowSchedule(false)} />}
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
       {selectedCert && (<CertificateModal certificate={selectedCert} onClose={() => setSelectedCert(null)} />
       )}
     </>
