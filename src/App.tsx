@@ -117,7 +117,7 @@ function App() {
           </a>
         </div>
       </div>
-      <h3 className='text-center mt-14 mb-10'>&copy; 2026 Rolando Jr Hernandez. All rights reserved.</h3>
+      <h3 className='text-center mt-14 mb-10'>&copy; 2026 RJRHRNDZ. All rights reserved.</h3>
     </>
   );
 

@@ -71,6 +71,26 @@ const createAssistantReply = (rawMessage) => {
     return `My name is Rolando I'm a Full Stack Software Engineer focused on building software solutions, development with user-centric mindset, building modern software with integrated AI-powered tools.`;
   }
 
+  if (message.includes('about') || message.includes('how are you')) {
+    return `I’m doing great and focusing on building new projects.`;
+  }
+
+  if (message.includes('what project is that')) {
+    return `An application that provides solutions to specific problems.`;
+  }
+
+  if (message.includes('did you eat') || message.includes('eat')) {
+    return `Yep 😄`;
+  }
+
+  if (message.includes('are you sleeping') || message.includes('sleeping')) {
+    return `I haven’t slept yet because I’m focused on my goals.`;
+  }
+
+  if (message.includes('well go to sleep')) {
+    return `Later on, when I’ve accomplished something in what I’m doing.`;
+  }
+
   if (message.includes('certificate') || message.includes('cert')) {
     return 'My portfolio includes recent certificates I have received, which you can explore in the timeline section.';
   }
@@ -116,7 +136,7 @@ const ChatSession = ({ onClose, isDarkMode = false }) => {
     {
       id: 1,
       role: 'assistant',
-      text: 'Hi! I’m Rolando Jr Hernandez. Is there anything you want to know about my projects, experiences or my contact details? Tell me what you need or what you have to ask.',
+      text: 'Hi! I’m Jr, What can I do for you? Is there anything you want to know about my projects, experiences or my contact details? Tell me what you need or what you have to ask.',
     },
   ]);
   const [inputValue, setInputValue] = useState('');
