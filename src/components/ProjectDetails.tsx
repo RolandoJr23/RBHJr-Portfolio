@@ -28,7 +28,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl border border-white/25 bg-white/15 shadow-2xl shadow-slate-950/30 backdrop-blur-2xl animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-4xl h-[72vh] max-h-[82vh] overflow-hidden rounded-3xl border border-white/25 bg-white/15 shadow-2xl shadow-slate-950/30 backdrop-blur-2xl animate-in zoom-in-95 duration-300"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-white/80 pointer-events-none" />
@@ -42,8 +42,8 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           <X className="h-5 w-5" />
         </button>
 
-        <div className="relative grid gap-0 md:grid-cols-[1.05fr_0.95fr] max-h-[90vh] overflow-y-auto">
-          <div className="relative min-h-[220px] md:min-h-full">
+        <div className="relative grid h-full gap-0 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-[220px] h-full overflow-hidden md:min-h-full">
             <img
               src={project.image}
               alt={project.title}
@@ -65,7 +65,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             </div>
           </div>
 
-          <div className="relative p-6 md:p-8 text-white">
+          <div className="relative h-full overflow-y-auto p-6 md:p-8 text-white">
             <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-md">
                 <CalendarDays className="h-4 w-4" />
@@ -84,6 +84,20 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
               <p className="mt-3 text-sm leading-6 text-white/80">
                 {project.overview}
               </p>
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white/70">
+                Features
+              </h3>
+              <ul className="mt-3 space-y-3">
+                {project.featureinclude.map((feature) => (
+                  <li key={feature} className="flex gap-3 text-sm leading-6 text-white/80">
+                    <span className="mt-2 h-2 w-2 flex-none rounded-full bg-white/70" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <div className="mt-5 rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">

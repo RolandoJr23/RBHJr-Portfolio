@@ -13,7 +13,6 @@ import { Mail, Calendar, MapPin, FolderOpen } from 'lucide-react';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import FacebookIcon from '@mui/icons-material/Facebook';
 
 import myphoto from './assets/rbhjr.png';
 import faithlogo from './assets/faithlogooo.jpg';
@@ -106,11 +105,16 @@ function App() {
       {/* Social Media */}
       <div className="w-full max-w-xs mt-3">
         <h2 className="text-black font-bold text-lg">Social Media</h2>
-        <div className='h-12 flex items-center'>
-          <GitHubIcon className='w-5 h-5 cursor-pointer'><a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank"></a></GitHubIcon>
-          <InstagramIcon className='w-20 h-5 cursor-pointer' />
-          <LinkedInIcon className='w-5 h-5 cursor-pointer' />
-          <FacebookIcon className='w-5 h-5 cursor-pointer' />
+        <div className='h-12 flex items-center gap-2'>
+          <a href="https://github.com/RolandoJr23/RolandoJr23.git" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <GitHubIcon style={{ fontSize: 30 }} className="cursor-pointer" />
+          </a>
+          <a href="https://www.instagram.com/invites/contact/?igsh=1rgwwp3xtfjif&utm_content=107jhdm4" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <InstagramIcon style={{ fontSize: 30 }} className="cursor-pointer" />
+          </a>
+          <a href="https://www.linkedin.com/in/rolando-jr-hernandez-1a3772330?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BNIMedTBfQguj8c9NXI6uZw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <LinkedInIcon style={{ fontSize: 30 }} className="cursor-pointer" />
+          </a>
         </div>
       </div>
       <h3 className='text-center mt-14 mb-10'>&copy; 2026 Rolando Jr Hernandez. All rights reserved.</h3>
@@ -484,8 +488,8 @@ function App() {
                 {/* Project 1 */}
                 <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
-                    <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>My Thesis Project</h1>
-                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two Main Roads in Tanauan City, Batangas Build in Python and Yolov8 Algorithm</p>
+                    <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>TD: Vehicle Detection & Counting System</h1>
+                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>An AI-powered traffic monitoring system using YOLOv8 for real-time vehicle detection, counting, and traffic flow analysis in Tanauan City.</p>
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                     <button
@@ -572,7 +576,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      <div className="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3">
         {showChat && <ChatSession onClose={() => setShowChat(false)} isDarkMode={isDarkMode} />}
         <div className="flex items-center p-2 gap-3 rounded-3xl bg-gray-700 shadow-lg">
           <Darkmode themeMode={themeMode} isDarkMode={isDarkMode} onToggle={handleThemeToggle} />
