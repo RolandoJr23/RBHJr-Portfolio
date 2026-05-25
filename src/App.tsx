@@ -478,6 +478,23 @@ function App() {
                   <h2 className='text-sm text-gray-400 pl-5'>Github</h2>
                   <h2 className='text-sm text-gray-400 pl-5'>npm/yarn</h2>
                   <h2 className='text-sm text-gray-400 pl-5'>Postman</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Google Colab</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Roboflow</h2>
+                </div>
+              </div>
+              <div className='mt-3'>
+                <h1 className='text-md text-black pl-5'>AI & Data Science</h1>
+                <div className='flex flex-wrap mt-3'>
+                  <h2 className='text-sm text-gray-400 pl-5'>PyTorch</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Tensorflow</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Pandas</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Numpy</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Matplotlib</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Scikit-Learn</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Imbalanced-Learn</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Supervised Learning</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Unsupervised Learning</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>YOLO</h2>
                 </div>
               </div>
             </div>
