@@ -26,7 +26,7 @@ export const projectdetails: ProjectDetails[] = [
         image: imagetrafficdetect,
         techstack: "Flask API, Python, OpenCV, Ultralytics (YoloV8), PyTorch, Pandas, Numpy, Matplotlib",
         featureinclude: ['Real-time vehicle detection and counting using AI-powered Ultralytics YOLOv8 algorithm' , 'Traffic flow monitoring for major roads in Tanauan City', 'Automated vehicle data collection and analysis', 'Monitoring of congestion levels on Pres. J.P. Laurel Highway and A. Mabini Avenue', 'AI-assisted traffic management support for the City Traffic Management Office (TMO)', 'Data-driven planning and traffic regulation insights', 'Operational Research integration for traffic analysis and optimization', 'Live monitoring dashboard for vehicle movement and traffic conditions', 'Improved accuracy and reduced manual traffic counting errors', 'Scalable system for future smart city traffic management implementations'],
-        projectURL: "https://docs.google.com/document/d/1exNJJxyTPZ45QByub410jlo2WQ7QG4ZN/edit?usp=sharing&ouid=102197950321833428219&rtpof=true&sd=true",
+        projectURL: "https://huggingface.co/spaces/RJRHRNDZ/TrafficDetect",
     },{
         id: 2,
         title: "PointOfSales",
