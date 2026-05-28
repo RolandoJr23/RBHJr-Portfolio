@@ -20,6 +20,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
     project.projectURL &&
     project.projectURL !== 'none' &&
     project.projectURL !== 'Not Yet';
+  const isDocumentLinkAvailable = Boolean(project.documentURL);
 
   return (
     <div
@@ -36,7 +37,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/15 text-white transition hover:bg-white/25 hover:scale-105"
+          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:scale-105 cursor-pointer"
           aria-label="Close project modal"
         >
           <X className="h-5 w-5" />
@@ -133,13 +134,25 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 </div>
               )}
 
-              <button
-                type="button"
-                onClick={onClose}
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
-              >
-                Close
-              </button>
+              {isDocumentLinkAvailable ? (
+                <a
+                  href={project.documentURL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
+                >
+                  View Document
+                  <ArrowUpRight className="ml-2 h-4 w-4" />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
+                >
+                  Close
+                </button>
+              )}
             </div>
           </div>
         </div>

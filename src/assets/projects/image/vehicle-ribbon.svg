@@ -1,0 +1,89 @@
+<svg width="120" height="260" viewBox="0 0 120 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ribbonBody" x1="20" y1="40" x2="100" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B91C1C"/>
+      <stop offset="0.22" stop-color="#EF4444"/>
+      <stop offset="0.55" stop-color="#DC2626"/>
+      <stop offset="0.82" stop-color="#A61B1B"/>
+      <stop offset="1" stop-color="#7F1D1D"/>
+    </linearGradient>
+    <linearGradient id="ribbonFold" x1="18" y1="10" x2="102" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5F1414"/>
+      <stop offset="0.55" stop-color="#B91C1C"/>
+      <stop offset="1" stop-color="#F87171"/>
+    </linearGradient>
+    <linearGradient id="ribbonShadow" x1="0" y1="0" x2="0" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="white" stop-opacity="0.18"/>
+      <stop offset="0.2" stop-color="white" stop-opacity="0.02"/>
+      <stop offset="1" stop-color="black" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="ribbonSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="white" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="black" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+
+  <path
+    d="M30 10H90C95 10 100 15 100 20V34H20V20C20 15 25 10 30 10Z"
+    fill="url(#ribbonFold)"
+  />
+
+  <path
+    d="M20 32H100V164C100 176 94 187 85 194L60 214L35 194C26 187 20 176 20 164V32Z"
+    fill="url(#ribbonBody)"
+  />
+
+  <path
+    d="M20 32H100V164C100 176 94 187 85 194L60 214L35 194C26 187 20 176 20 164V32Z"
+    fill="url(#ribbonShadow)"
+  />
+
+  <path
+    d="M24 32H30V162C30 174 26 184 20 191V162V32Z"
+    fill="white"
+    fill-opacity="0.14"
+  />
+
+  <path
+    d="M96 32H100V162C100 174 103 184 108 191V162V32Z"
+    fill="black"
+    fill-opacity="0.10"
+  />
+
+  <path
+    d="M20 164C20 176 26 187 35 194L60 214L85 194C94 187 100 176 100 164L79 180L60 197L41 180L20 164Z"
+    fill="#8A1C1C"
+  />
+
+  <path
+    d="M29 17H91"
+    stroke="white"
+    stroke-opacity="0.28"
+    stroke-width="2.6"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M25 48C33 48 36 52 36 58V152C36 157 33 162 29 166"
+    stroke="white"
+    stroke-opacity="0.14"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <path
+    d="M95 48C87 48 84 52 84 58V152C84 157 87 162 91 166"
+    stroke="black"
+    stroke-opacity="0.18"
+    stroke-width="3.5"
+    stroke-linecap="round"
+    fill="none"
+  />
+
+  <path
+    d="M20 32H100V164C100 176 94 187 85 194L60 214L35 194C26 187 20 176 20 164V32Z"
+    stroke="url(#ribbonSide)"
+    stroke-width="1.2"
+  />
+</svg>

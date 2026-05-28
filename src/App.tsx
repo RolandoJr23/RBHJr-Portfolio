@@ -23,6 +23,7 @@ import jcologo from './assets/jcologo.png';
 import jollibeelogo from './assets/jollibeelogo.png';
 import helloworldlogo from './assets/helloworldlogo.png';
 import techacademylogo from "./assets/techacademylogo.png";
+import vehicleRibbon from "./assets/projects/image/blueribbon.png";
 
 const jobRoles = ["Software Engineer", "Full Stack Developer", "Data Science", "Data Analyst"];
 
@@ -458,6 +459,7 @@ function App() {
                   <h2 className='text-sm text-gray-400 pl-5'>Python</h2>
                   <h2 className='text-sm text-gray-400 pl-5'>C#</h2>
                   <h2 className='text-sm text-gray-400 pl-5'>REST API</h2>
+                  <h2 className='text-sm text-gray-400 pl-5'>Flask API</h2>
                 </div>
               </div>
               <div className='mt-3'>
@@ -503,10 +505,16 @@ function App() {
               <h1 className='text-2xl font-bold text-black mb-6'>Recent Projects</h1>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                 {/* Project 1 */}
-                <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
+                <div className={`group relative overflow-hidden p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
+                  <img
+                    src={vehicleRibbon}
+                    alt=""
+                    aria-hidden="true"
+                    className="pointer-events-none absolute right-2 top-[-8px] z-20 h-[136px] w-[74px] select-none object-contain drop-shadow-[0_12px_14px_rgba(0,0,0,0.2)]"
+                  />
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>TD: Vehicle Detection & Counting System</h1>
-                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>An AI-powered traffic monitoring system using YOLOv8 for real-time vehicle detection, counting, and traffic flow analysis in Tanauan City.</p>
+                    <p className='text-sm text-gray-500 mt-2 leading-relaxed line-clamp-3'>Web-based application with AI-powered traffic monitoring system using YOLOv8 for real-time vehicle detection and counting for traffic flow regulation and planning in Tanauan City.</p>
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                     <button
@@ -525,7 +533,7 @@ function App() {
                 <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>Point of Sales</h1>
-                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Point of Sales (POS) System in Modern UI/UX using Dynamic User Control for efficiency and
+                    <p className='text-sm text-gray-500 mt-2 leading-relaxed line-clamp-3'>Point of Sales (POS) System in Modern UI/UX using Dynamic User Control for efficiency and
                       reliable experience for improving accuracy, reduce error and improvise sales products.</p>
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
@@ -545,7 +553,7 @@ function App() {
                 <div className={`group p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>FINDSup</h1>
-                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Web-based application that connects local businesses with nearby suppliers and service providers.</p>
+                    <p className='text-sm text-gray-500 mt-2 leading-relaxed line-clamp-3'>Web-based application that connects local businesses with nearby suppliers and service providers.</p>
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                     <button
@@ -564,7 +572,7 @@ function App() {
                 <div className={`group  p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between ${isDarkMode ? "bg-none" : "bg-white"}`}>
                   <div>
                     <h1 className='text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors'>BlockAIStudy</h1>
-                    <p className='text-sm text-gray-500 mt-2 leading-relaxed'>Productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</p>
+                    <p className='text-sm text-gray-500 mt-2 leading-relaxed line-clamp-3'>Productivity and learning platform with AI assistance, collaboration tools, focus management, and secure study support.</p>
                   </div>
                   <div className="mt-4 flex flex-wrap items-center justify-between">
                     <button
