@@ -8,6 +8,7 @@ import { certificates, type Certificate } from './Files/Certificates';
 import { projectdetails, type ProjectDetails } from './Files/ProjectDetails';
 import CertificateModal from './components/CertificateModal';
 import ProjectModal from './components/ProjectDetails';
+import DemoModal from './components/DemoModal';
 
 import { Mail, Calendar, MapPin, FolderOpen } from 'lucide-react';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -60,6 +61,7 @@ function App() {
   });
   const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
   const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(null);
+  const [demoImages, setDemoImages] = useState<string[] | null>(null);
 
   const timelineRailClass = "mt-5 relative border-l-0 max-[767px]:ml-8 max-[767px]:border-l-4 min-[960px]:ml-0 min-[960px]:border-l-4 border-gray-700 pl-0 max-[767px]:pl-4 min-[960px]:pl-4";
   const timelineIconClass = "flex justify-center items-center w-12 h-12 mb-3 bg-white rounded-full border border-gray-700";
@@ -525,7 +527,11 @@ function App() {
                       <FolderOpen className="w-4 h-4" />
                       Open Folder
                     </button>
-                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                    {projectdetails[0].projectURL && projectdetails[0].projectURL !== "none" && projectdetails[0].projectURL !== "Not Yet" ? (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href={projectdetails[0].projectURL} target="_blank" rel="noopener noreferrer">Live →</a>
+                    ) : (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} onClick={(e) => { e.preventDefault(); setDemoImages(projectdetails[0].imageProject || []); }} href="#" rel="noopener noreferrer">View Demo →</a>
+                    )}
                   </div>
                 </div>
 
@@ -545,7 +551,11 @@ function App() {
                       <FolderOpen className="w-4 h-4" />
                       Open Folder
                     </button>
-                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                    {projectdetails[1].projectURL && projectdetails[1].projectURL !== "none" && projectdetails[1].projectURL !== "Not Yet" ? (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href={projectdetails[1].projectURL} target="_blank" rel="noopener noreferrer">Live →</a>
+                    ) : (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} onClick={(e) => { e.preventDefault(); setDemoImages(projectdetails[1].imageProject || []); }} href="#" rel="noopener noreferrer">View Demo →</a>
+                    )}
                   </div>
                 </div>
 
@@ -564,7 +574,11 @@ function App() {
                       <FolderOpen className="w-4 h-4" />
                       Open Folder
                     </button>
-                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="#" target="_blank" rel="noopener noreferrer">View Demo →</a>
+                    {projectdetails[2].projectURL && projectdetails[2].projectURL !== "none" && projectdetails[2].projectURL !== "Not Yet" ? (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href={projectdetails[2].projectURL} target="_blank" rel="noopener noreferrer">Live →</a>
+                    ) : (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} onClick={(e) => { e.preventDefault(); setDemoImages(projectdetails[2].imageProject || []); }} href="#" rel="noopener noreferrer">View Demo →</a>
+                    )}
                   </div>
                 </div>
 
@@ -583,7 +597,11 @@ function App() {
                       <FolderOpen className="w-4 h-4" />
                       Open Folder
                     </button>
-                    <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href="https://block-ai-study-4aj8.vercel.app/" target="_blank" rel="noopener noreferrer">Live →</a>
+                    {projectdetails[3].projectURL && projectdetails[3].projectURL !== "none" && projectdetails[3].projectURL !== "Not Yet" ? (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} href={projectdetails[3].projectURL} target="_blank" rel="noopener noreferrer">Live →</a>
+                    ) : (
+                      <a className={`text-sm font-bold cursor-pointer transition-colors ${isDarkMode ? "text-white hover:text-gray-500" : "text-blue-600 hover:text-blue-800"}`} onClick={(e) => { e.preventDefault(); setDemoImages(projectdetails[3].imageProject || []); }} href="#" rel="noopener noreferrer">View Demo →</a>
+                    )}
                   </div>
                 </div>
               </div>
@@ -615,6 +633,7 @@ function App() {
           onClose={() => setSelectedProject(null)}
         />
       )}
+      {demoImages && <DemoModal images={demoImages} onClose={() => setDemoImages(null)} isDarkMode={isDarkMode} />}
       {selectedCert && (<CertificateModal certificate={selectedCert} onClose={() => setSelectedCert(null)} />
       )}
     </>
