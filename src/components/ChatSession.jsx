@@ -31,16 +31,64 @@ const createAssistantReply = (rawMessage) => {
     return 'My preferred development tool is VSCode.';
   }
 
-  if (message.includes('what is your thesis project') || (message.includes('thesis') && message.includes('project'))) {
+  if (message.includes('when did you create Traffic Detect?') || (message.includes('create') && (message.includes('traffic detect') || message.includes('TD: Vehicle Detection & Counting System')))) {
+    return 'May2023';
+  }
+
+  if (message.includes('what are the features the of Traffic Detect?') || (message.includes('features') && (message.includes('traffic detect') || message.includes('TD: Vehicle Detection & Counting System')))) {
+    return 'These are the features in Traffic Detect (Real-time vehicle detection and counting using AI-powered Ultralytics YOLOv8 algorithm., Traffic flow monitoring for major roads in Tanauan City., Automated vehicle data collection and analysis., Monitoring of congestion levels on Pres. J.P. Laurel Highway and A. Mabini Avenue., AI-assisted traffic management support for the City Traffic Management Office (TMO), Data-driven planning and traffic regulation insights., Operational Research integration for traffic analysis and optimization., Live monitoring dashboard for vehicle movement and traffic conditions., Improved accuracy and reduced manual traffic counting errors., Scalable system for future smart city traffic management implementations.)';
+  }
+
+  if (message.includes('what are the tech stacks of Traffic Detect?') || ((message.includes('techstack') || message.includes('tech stack')) && (message.includes('traffic detect') || message.includes('TD: Vehicle Detection & Counting System')))) {
+    return 'These are the tech stacks used in Traffic Detect (HTML, CSS, Javascript, Python, Flask API, Gunicorn, OpenCV, Ultralytics (YoloV8), PyTorch, Numpy)';
+  }
+
+  if (message.includes('what is your Thesis Project?') || (message.includes('thesis') && message.includes('project'))) {
     return 'My Thesis Project is the Title Traffic Detect: Vehicle Detection and Counting System for Traffic Flow Monitoring Along Two Main Roads in Tanauan City, Batangas. It is built in Python and uses the YOLOv8 algorithm.';
   }
 
-  if (message.includes('what is point of sales') || (message.includes('point of sales') || message.includes('pos'))) {
+  if (message.includes('when did you create point of sales?') || (message.includes('create') && (message.includes('pos') || message.includes('point of sales')))) {
+    return 'From October2025 to November2025';
+  }
+
+  if (message.includes('what are the features the of point of sales?') || (message.includes('features') && (message.includes('pos') || message.includes('point of sales')))) {
+    return 'These are the features in Point of Sales (Dynamic User Controls: Implements a modular UI architecture for improved navigation., Account Management: Supports user logins, staff information management, and account updates., Order Management: Comprehensive bill listing, order tracking, and checkout procedures., Inventory Control: Dedicated modules for managing dishes, drinks, and canteen-specific products., Receipt Generation: Built-in printing capabilities for transaction receipts., Reporting: Integrated reporting tools (RDLC) for sales tracking)';
+  }
+
+  if (message.includes('what are the tech stacks of point of sales?') || ((message.includes('techstack') || message.includes('tech stack')) && (message.includes('pos') || message.includes('point of sales')))) {
+    return 'These are the tech stacks used in Point of Sales (C#, WinForms, Crystal Reports RDLC, Visual Studio)';
+  }
+
+  if (message.includes('what is point of sales?') || message.includes('point of sales') || message.includes('pos')) {
     return 'Point of Sales is a modern UI/UX POS system with dynamic user control designed for efficiency and a reliable experience, helping improve accuracy, reduce errors, and improve sales product handling.';
   }
 
-  if (message.includes('what is findsup') || message.includes('findsup')) {
+  if (message.includes('when did you create findsup?') || (message.includes('create') && message.includes('findsup'))) {
+    return 'From January2026 to March2026';
+  }
+
+  if (message.includes('what are the features the of findsup?') || (message.includes('features') && message.includes('findsup'))) {
+    return 'These are the features in Findsup (Supplier Marketplace: Browse local businesses by category, location, and product availability., Real-time Messaging: Direct communication between buyers and suppliers using socket.io., AI Admin Support: Integrated chatbot using a PyTorch intent-classifier to assist users with common queries., Cart & Ordering: Simplified purchasing workflow with wholesale pricing support., Auto Complete & Auto Suggestion (Product Recommendation): Smart auto-complete and suggests products instantly as users type, reducing search time and improving discovery., Secure Payment Gateway (Escrow): Escrow payment gateway ensures secure transactions by holding funds until services or products are successfully delivered and approved., SMS Verification (Twilio): SMS verification ensures recipient numbers are validated using one-time passcodes, enhancing account security and preventing unauthorized access., Order Tracking: Track your order in real-time from confirmation to delivery. Stay updated with status changes, shipping progress, and estimated arrival., Refund Items : Request refunds easily for eligible items. Submit a return, track approval, and receive your refund through your original payment method., Supplier Console: Dedicated dashboard for business owners to manage products, pricing tiers, and orders., Secure Auth: JWT-based authentication for user and business accounts.)';
+  }
+
+  if (message.includes('what are the tech stacks of findsup?') || ((message.includes('techstack') || message.includes('tech stack')) && message.includes('findsup'))) {
+    return 'These are the tech stacks used in Findsup (React(v19) + Vite, CSS, Material UI, Node.js, Express.js, MongoDB, Python, Flask, PyTorch, Escrow, Twilio)';
+  }
+
+  if (message.includes('what is findsup?') || message.includes('findsup')) {
     return 'FINDSup is a web-based application that connects local businesses with nearby suppliers and service providers.';
+  }
+
+  if (message.includes('when did you create blockaistudy?') || (message.includes('create') && message.includes('blockaistudy'))) {
+    return 'From April2026 to May2026';
+  }
+
+  if (message.includes('what are the features the of blockaistudy?') || (message.includes('features') && message.includes('blockaistudy'))) {
+    return 'These are the features in Blockaistudy (Smart Dashboard: productivity insights, analytics, session tracking, and performance overview., Academy Hub: centralized space for learning resources and academic tools., Focus System: distraction detection, app/website monitoring, and focus session tracking., AI Learning Tools: AI tutor, smart notes, quiz/flashcard generator, practice tests, and interview coaching., Meet System: collaboration mode for group study, planning and teamwork + interview mode for secure 1:1 sessions., Real-Time System: WebSocket + WebRTC powered communication for live collaboration.)';
+  }
+
+  if (message.includes('what are the tech stacks of blockaistudy?') || ((message.includes('techstack') || message.includes('tech stack')) && message.includes('blockaistudy'))) {
+    return 'These are the tech stacks used in Blockaistudy (React(v19) + Vite, Tailwind CSS, Lucide-react, Node.js, Express.js, WebSocket, WebRTC, PostgreSQL, Qwen3-Next)';
   }
 
   if (message.includes('what is blockaistudy') || message.includes('blockaistudy')) {
@@ -67,11 +115,11 @@ const createAssistantReply = (rawMessage) => {
     return 'Yes, you can book a call using the Schedule a Call button. It opens the Cal.com schedule flow.';
   }
 
-  if (message.includes('about') || message.includes('who are you')) {
+  if (message.includes('who are you') || (message.includes('about') && !message.includes('how'))) {
     return `My name is Rolando I'm a Full Stack Software Engineer focused on building software solutions, development with user-centric mindset, building modern software with integrated AI-powered tools.`;
   }
 
-  if (message.includes('about') || message.includes('how are you')) {
+  if (message.includes('how are you') || (message.includes('about') && message.includes('how'))) {
     return `I’m doing great and focusing on building new projects.`;
   }
 
