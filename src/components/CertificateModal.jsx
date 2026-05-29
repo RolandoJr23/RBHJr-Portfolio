@@ -27,7 +27,7 @@ const CertificateModal = ({ certificate, onClose }) => {
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/15 text-white transition hover:bg-white/25 hover:scale-105"
+          className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center text-white transition hover:scale-105 cursor-pointer"
           aria-label="Close certificate modal"
         >
           <X className="h-5 w-5" />

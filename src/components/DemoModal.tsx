@@ -34,9 +34,9 @@ const DemoModal: React.FC<DemoModalProps> = ({ images, onClose, isDarkMode }) =>
         {/* Header/Close */}
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all cursor-pointer border-none"
+          className={` absolute top-4 right-4 z-20 p-2 transition hover:scale-110 cursor-pointer ${isDarkMode ? "text-white" : "text-gray-900"}`}
         >
-          <X size={24} />
+          <X className="h-5 w-5" />
         </button>
 
         {/* Content Slider */}
