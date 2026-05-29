@@ -631,6 +631,7 @@ function App() {
         <ProjectModal
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
+          onViewDemo={(images) => setDemoImages(images)}
         />
       )}
       {demoImages && <DemoModal images={demoImages} onClose={() => setDemoImages(null)} isDarkMode={isDarkMode} />}

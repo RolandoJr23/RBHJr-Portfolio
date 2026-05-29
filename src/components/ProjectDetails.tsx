@@ -5,9 +5,10 @@ import type { ProjectDetails } from '../Files/ProjectDetails';
 type ProjectModalProps = {
   project: ProjectDetails;
   onClose: () => void;
+  onViewDemo?: (images: string[]) => void;
 };
 
-const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+const ProjectModal = ({ project, onClose, onViewDemo }: ProjectModalProps) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -125,13 +126,18 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/25 hover:scale-[1.01]"
                 >
-                  View Project
+                  Live
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
               ) : (
-                <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white/65">
-                  Project link not available yet
-                </div>
+                <button
+                  type="button"
+                  onClick={() => onViewDemo?.(project.imageProject || [])}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/25 hover:scale-[1.01] cursor-pointer"
+                >
+                  View Demo
+                  <ArrowUpRight className="h-4 w-4" />
+                </button>
               )}
 
               {isDocumentLinkAvailable ? (
