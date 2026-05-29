@@ -49,18 +49,6 @@ const CertificateModal = ({ certificate, onClose }) => {
               />
             </div>
           )}
-          {certificate.credentialUrl && (
-            <div className="mt-6 text-center">
-              <a
-                href={certificate.credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/25 hover:scale-105"
-              >
-                View Credential
-              </a>
-            </div>
-          )}
           {certificate.description && (
             <p className="mt-4 text-sm leading-6 text-white/75">
               {certificate.description}
