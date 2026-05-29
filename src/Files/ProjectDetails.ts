@@ -2,7 +2,6 @@ import imagetrafficdetect from '../assets/projects/image/trafficdetect.png';
 import imagepos from '../assets/projects/image/pos.png';
 import imagefindsup from '../assets/projects/image/findsup.png';
 import imageblockaistudy from '../assets/projects/image/blockaistudy.png';
-import vehicleRibbon from '../assets/projects/image/blueribbon.png';
 
 import td1 from '../assets/projects/image/trafficdetectfolder/td1.png';
 import td2 from '../assets/projects/image/trafficdetectfolder/td2.png';
