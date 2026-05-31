@@ -100,7 +100,7 @@ const createAssistantReply = (rawMessage) => {
   }
 
   if (message.includes('experience') || message.includes('job') || message.includes('work history')) {
-    return `My previous job experiences are Demand & Material Planner, Inventory Controller, and StockMan. Now I've continued developing software and pushing my dream.`;
+    return `My previous work experience includes roles as a Demand & Material Planner, Inventory Controller, and Stockman. I am now focused on further developing my software development skills and pursuing my long-term career goals in the tech industry.`;
   }
 
   if (message.includes('skill') || message.includes('tech') || message.includes('stack')) {
