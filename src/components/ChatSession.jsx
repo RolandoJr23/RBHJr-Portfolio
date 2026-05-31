@@ -115,15 +115,35 @@ const createAssistantReply = (rawMessage) => {
     return 'Yes, you can book a call using the Schedule a Call button. It opens the Cal.com schedule flow.';
   }
 
-  if (message.includes('who are you') || (message.includes('about') && !message.includes('how'))) {
+  if (message.includes('who are you?') || (message.includes('about') && !message.includes('how'))) {
     return `My name is Rolando I'm a Full Stack Software Engineer focused on building software solutions, development with user-centric mindset, building modern software with integrated AI-powered tools.`;
   }
 
-  if (message.includes('how are you') || (message.includes('about') && message.includes('how'))) {
+  if (message.includes('how are you?') || (message.includes('about') && message.includes('how'))) {
     return `I’m doing great and focusing on building new projects.`;
   }
 
-  if (message.includes('what project is that')) {
+  if (message.includes('how old are you?') || (message.includes('about') && message.includes('how')) || (message.includes('old'))) {
+    return `I’m 25 years old.`;
+  }
+
+  if (message.includes('where are you from?') || (message.includes('about') && message.includes('from'))) {
+    return `I’m from San Antonio Santo Tomas, Batangas, Philippines`;
+  }
+
+  if (message.includes('what is your height?') || (message.includes('about') && message.includes('height'))) {
+    return `My height is 5 feet 10 inches.`;
+  }
+
+  if (message.includes('what is your weight?') || (message.includes('about') && message.includes('weight'))) {
+    return `My weight is around 100 kg.`;
+  }
+
+  if (message.includes('what is your bloodtype?') || (message.includes('about') && message.includes('bloodtype'))) {
+    return `My blood type is O positive.`;
+  }
+
+  if (message.includes('What project are you working on?') || message.includes('you working on')) {
     return `An application that provides solutions to specific problems.`;
   }
 
@@ -131,7 +151,7 @@ const createAssistantReply = (rawMessage) => {
     return `Yep 😄`;
   }
 
-  if (message.includes('are you sleeping') || message.includes('sleeping')) {
+  if (message.includes('are you sleeping?') || message.includes('sleeping')) {
     return `I haven’t slept yet because I’m focused on my goals.`;
   }
 
@@ -184,7 +204,7 @@ const ChatSession = ({ onClose, isDarkMode = false }) => {
     {
       id: 1,
       role: 'assistant',
-      text: 'Hi! I’m Jr, What can I do for you? Is there anything you want to know about my projects, experiences or my contact details? Tell me what you need or what you have to ask.',
+      text: `Hi! I'm Jr. How can I help you today? If you'd like to learn more about my projects, experience, skills, or contact information, feel free to ask. I'm happy to answer your questions and provide any information you need.`,
     },
   ]);
   const [inputValue, setInputValue] = useState('');
